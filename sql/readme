@@ -1,1 +1,6 @@
 These are the files to create the database and the EER model.
+According to the data format at: https://openlibrary.org/dev/docs/api/books
+the 'bib_key' can use many different identifiers as keys to look up books, so 
+currently this uses the 'isbn_10' identifier as primary key to keep things simple, which
+can be coded to be used by the bib_key.  Feel free to edit as required.
+
