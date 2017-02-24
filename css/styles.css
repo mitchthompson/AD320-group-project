@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*  
+Version: 1.0
+@Author: Mitchell Thompson
+*/
+body, body * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+    line-height: 1.5;
+    color: ;
+}
+a img {
+	border: 0;
+}
+.navbar {
+    border-radius: 0;
+    border: 0;
+}
+.navbar.navbar-default {
+    background-color:;
+}
+.navbar-brand {
+    font-size: 1.8em;
+}
+.header {
+    max-width: 1200px;
+}
+.user-btn {
+    margin-top: 40px;
+}
+
