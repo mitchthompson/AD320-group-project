@@ -35,10 +35,10 @@
                 </div><!--end col-lg-12-->
                 <div class="col-md-12 user-btn">
                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-lg-4 col-sm-4 col-xs-6">
-                        <a href="#" class="register btn btn-primary center-block" role="button">Register  <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a href="register.php" class="register btn btn-primary center-block" role="button">Register  <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                     <div class="col-lg-4 col-sm-4 col-xs-6">
-                        <a href="#" class="log-in btn btn-primary center-block" role="button">Log In  <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a href="login.php" class="log-in btn btn-primary center-block" role="button">Log In  <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div><!--col-md-12-->
             </div><!--end row-->

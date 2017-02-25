@@ -30,12 +30,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                      </button>
-                     <a class="navbar-brand" href="/index.php">App Name</a>
+                     <a class="navbar-brand" href="./index.php">App Name</a>
                   </div><!--navbar-header -->
                 <div class="navbar-collapse collaspe collapse"  id="myNav">                               
                     <ul class="nav navbar-nav navbar-right">     
-                        <li><a href="/register.php">Register</a></li> 
-                        <li><a href="/user-lg.php">Log In</a></li>    
+                        <li><a href="./register.php">Register</a></li> 
+                        <li><a href="./login.php">Log In</a></li>    
                     </ul> 
                 </div><!-- collaspe navbar-collapse -->
         </div><!--container-fluid-->
