@@ -10,7 +10,6 @@ body, body * {
 	margin: 0;
 	box-sizing: border-box;
     line-height: 1.5;
-    color: ;
 }
 a img {
 	border: 0;
@@ -20,7 +19,6 @@ a img {
     border: 0;
 }
 .navbar.navbar-default {
-    background-color:;
 }
 .navbar-brand {
     font-size: 1.8em;
@@ -30,5 +28,12 @@ a img {
 }
 .user-btn {
     margin-top: 40px;
+}
+
+/******* User page *********/
+.sort {
+    margin-top: 20px;
+}
+.library {
 }
 
