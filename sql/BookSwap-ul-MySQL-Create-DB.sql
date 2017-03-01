@@ -41,9 +41,19 @@ CREATE TABLE book
     PRIMARY KEY (isbn_10)
 );
 
-CREATE TABLE user_book
+CREATE TABLE user_owns_book
 (
   user_id			INT         	NOT NULL,
+  isbn_10       	VARCHAR(20)     NOT NULL,
+  entry_date        DATE        	NOT NULL,
+  delete_date		DATE,
+  CONSTRAINT user_book_pk
+    PRIMARY KEY (user_id, isbn_10)
+);
+
+CREATE TABLE user_requests_book
+(
+  user_id			INT         	      NOT NULL,
   isbn_10       	VARCHAR(20)     NOT NULL,
   entry_date        DATE        	NOT NULL,
   delete_date		DATE,
@@ -54,8 +64,7 @@ CREATE TABLE user_book
 CREATE TABLE author
 (
   author_id				INT         	NOT NULL	AUTO_INCREMENT,
-  author_first_name		VARCHAR(50)     NOT NULL,
-  author_last_name		VARCHAR(50)		NOT NULL,
+  author_name		VARCHAR(255)     NOT NULL,
   CONSTRAINT author_id_pk
     PRIMARY KEY (author_id)
 );
