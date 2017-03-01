@@ -27,6 +27,12 @@ class Book
         $this->thumbnail = $thumbnail;
     }
 
+    public static function retrieveBook(){
+        $stmt = $pdo->prepare('SELECT isbn, author, title, year, thumbnail FROM books WHERE id=?');
+        $stmt->execute([$id]);
+        return $stmt->fetchObject(__CLASS__);
+}
+
     /**
      * @return mixed
      */
