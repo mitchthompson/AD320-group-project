@@ -16,6 +16,9 @@ if (!isset($postalcode)) {$postalcode = ''; }
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
+				<?php if (!empty($error_message)) { ?>
+					<p><?php echo htmlspecialchars($error_message); ?></p>
+				<?php } ?>	
                     <form action="search.php" method="post">
 							<div class="form-group">
                                 <input class="form-control" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" name="first_name" value="<?php echo htmlspecialchars($first_name); ?>">
