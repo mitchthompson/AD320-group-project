@@ -8,8 +8,7 @@
                             <div class="col-md-3">
                                 <select class="form-control form-control-lg" name="cars">
                                   <option value="" disabled selected>Choose...</option>
-                                  <option value="Title">Title</option>
-                                  <option value="Author">Author</option>
+                                    <option value="Title">Title</option>
                                   <option value="ISBN">ISBN</option>
                                 </select>
                             </div><!--col-md-3-->

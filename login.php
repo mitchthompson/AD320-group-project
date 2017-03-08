@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="search.php" method="post">
+                    <form action="user.php" method="post">
                         <div class="">
                             <div class="col-md-4">
                                 <input class="form-control" type="text" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" name="username">
