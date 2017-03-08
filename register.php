@@ -19,7 +19,7 @@ if (!isset($postalcode)) {$postalcode = ''; }
 				<?php if (!empty($error_message)) { ?>
 					<p><?php echo htmlspecialchars($error_message); ?></p>
 				<?php } ?>	
-                    <form action="search.php" method="post">
+                    <form action="registration.php" method="post">
 							<div class="form-group">
                                 <input class="form-control" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" name="first_name" value="<?php echo htmlspecialchars($first_name); ?>">
                             </div>
