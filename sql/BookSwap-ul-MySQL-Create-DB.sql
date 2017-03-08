@@ -20,7 +20,8 @@ CREATE TABLE user
   user_id           INT             NOT NULL 	AUTO_INCREMENT,
   user_first_name   VARCHAR(50)		NOT NULL,
   user_last_name    VARCHAR(50)     NOT NULL,
-  user_zip          VARCHAR(20)		NOT NULL,
+  user_city          VARCHAR(20)		NOT NULL,
+  user_state        VARCHAR(2)    NOT NULL,
   user_email		VARCHAR(50)		NOT NULL,
   user_password		VARCHAR(20)		NOT NULL,
   CONSTRAINT user_pk 
@@ -31,11 +32,11 @@ CREATE TABLE user
 
 CREATE TABLE book
 (
-  isbn_10      		VARCHAR(20)     NOT NULL,
+  isbn     		VARCHAR(13)     NOT NULL,
   title         	VARCHAR(100)	NOT NULL,
+  author        VARCHAR(255) NOT NULL,
   publishers		VARCHAR(100)	NOT NULL,
   publish_date		DATE			NOT NULL,
-  number_of_pages	INT,
   thumbnail_url		VARCHAR(255),			
   CONSTRAINT isbn_10_pk 
     PRIMARY KEY (isbn_10)
@@ -44,7 +45,7 @@ CREATE TABLE book
 CREATE TABLE user_owns_book
 (
   user_id			INT         	NOT NULL,
-  isbn_10       	VARCHAR(20)     NOT NULL,
+  isbn       	VARCHAR(13)     NOT NULL,
   entry_date        DATE        	NOT NULL,
   delete_date		DATE,
   CONSTRAINT user_book_pk
@@ -54,25 +55,9 @@ CREATE TABLE user_owns_book
 CREATE TABLE user_requests_book
 (
   user_id			INT         	      NOT NULL,
-  isbn_10       	VARCHAR(20)     NOT NULL,
+  isbn       	VARCHAR(13)     NOT NULL,
   entry_date        DATE        	NOT NULL,
   delete_date		DATE,
   CONSTRAINT user_book_pk
     PRIMARY KEY (user_id, isbn_10)
-);
-
-CREATE TABLE author
-(
-  author_id				INT         	NOT NULL	AUTO_INCREMENT,
-  author_name		VARCHAR(255)     NOT NULL,
-  CONSTRAINT author_id_pk
-    PRIMARY KEY (author_id)
-);
-
-CREATE TABLE author_book
-(
-  author_id				INT         	NOT NULL,
-  isbn_10       		VARCHAR(20)     NOT NULL,
-  CONSTRAINT author_book_pk
-    PRIMARY KEY (author_id, isbn_10)
 );
