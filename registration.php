@@ -13,7 +13,6 @@ $error_message = '';
 
 if (!isset($first_name) || !isset($last_name) || !isset($username) || !isset($password) || !isset($email) || !isset($postalcode)) {
 	$error_message = "Please complete all fields to register.";
-?><p><?php echo $error_message; ?></p><?php
 }
 
 //if error message exists, go back to registration page
