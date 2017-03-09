@@ -22,23 +22,31 @@ class Book
      * @param $isbn
      * @param bool $exists false will call api to fill in the rest
      */
-    public function __construct($isbn,$exists = true)
+    public function __construct($isbn)
     {
         $this->isbn = $isbn;
-        $exists = false;
-        if($exists){
+        //$exists = false;
+        if($this->isbn){
             echo 'Book exists, fetching from db.';
             try {
                 $conn = new dbPDO();
-                $stmt = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
-                $stmt->execute([$isbn]);
-                return $stmt->fetchObject(__CLASS__);
+                $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
+                $sth->execute([$this->isbn]);
+                while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                    $this->author = $row['author'];
+                    $this->title =  $row['title'];
+                    $this->publishers = $row['publishers'];
+                    //var_dump($json["ISBN:$isbn"]['publishers']);
+                    $this->publish_date = $row['publish_date'];
+                    $this->thumbnail_url = $row['thumbnail_url'];
+                }
+
             } catch (PDOException $p) {
                 echo $p->getMessage();
             }
         }
 
-        else if(!$exists){
+        else{
             echo 'Book does not exist, trying from API';
             $format = 'format=json';
             $jsonType = 'jscmd=data';
@@ -61,9 +69,6 @@ class Book
 
         }
 
-        else {
-            echo 'Something is wrong.';
-        }
     }
 
     /**
@@ -172,7 +177,7 @@ class Book
             $book .= "<h3>PUBLISHER:"   .$this->publishers      ."</h3>";
             $book .= "<h4>DATE:"        .$this->publish_date    ."</h4>";
             $book .= "<h4>AUTHOR:"      .$this->author     ."</h4>";
-            $book .= "<h4>ISBN:"        .$this->isbn_10         ."</h4>";
+            $book .= "<h4>ISBN:"        .$this->isbn         ."</h4>";
             if($user){
                 $book .= "<h5>USER:"    .$user                  ."</h5>";
             }
