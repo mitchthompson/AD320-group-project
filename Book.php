@@ -6,10 +6,13 @@
  * Date: 2/20/17
  * Time: 8:36 PM
  */
+
+include 'db/dbPDO.php';
+
 class Book
 {
 
-    private $isbn, $title, $publish_date, $thumbnail_url, $author_name, $publishers;
+    private $isbn, $title, $author, $publishers, $publish_date, $thumbnail_url;
 
     /**
      * Book constructor.
@@ -22,22 +25,44 @@ class Book
     public function __construct($isbn,$exists = true)
     {
         $this->isbn = $isbn;
-        if(!$exists){
+        $exists = false;
+        if($exists){
+            echo 'Book exists, fetching from db.';
+            try {
+                $conn = new dbPDO();
+                $stmt = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
+                $stmt->execute([$isbn]);
+                return $stmt->fetchObject(__CLASS__);
+            } catch (PDOException $p) {
+                echo $p->getMessage();
+            }
+        }
+
+        else if(!$exists){
+            echo 'Book does not exist, trying from API';
             $format = 'format=json';
             $jsonType = 'jscmd=data';
             $url = 'https://openlibrary.org/api/books?';
             $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
+
+            echo $url;
 
             //TODO: error handling
             $json = json_decode(file_get_contents($url),true);
 
 
             $this->isbn_10 = $isbn;
-            $this->author_name= $json["ISBN:$isbn"]['authors'][0]['name'];
-            $this->title = $json["ISBN:$isbn"]['title'];
-            $this->publishers = $json["ISBN:$isbn"]['publishers']['name'];
-            $this->publish_date = $json["ISBN:$isbn"]['publish_date'];
-            $this->thumbnail_url = $json["ISBN:$isbn"]['cover']['medium'];
+            $this->author =         $json["ISBN:$isbn"]['authors'][0]['name'];
+            $this->title =          $json["ISBN:$isbn"]['title'];
+            $this->publishers =     $json["ISBN:$isbn"]['publishers'][0]['name'];
+            //var_dump($json["ISBN:$isbn"]['publishers']);
+            $this->publish_date =   $json["ISBN:$isbn"]['publish_date'];
+            $this->thumbnail_url =  $json["ISBN:$isbn"]['cover']['medium'];
+
+        }
+
+        else {
+            echo 'Something is wrong.';
         }
     }
 
@@ -108,17 +133,17 @@ class Book
     /**
      * @return mixed
      */
-    public function getAuthorName()
+    public function getAuthor()
     {
-        return $this->author_name;
+        return $this->author;
     }
 
     /**
-     * @param mixed $author_name
+     * @param mixed $author
      */
-    public function setAuthorName($author_name)
+    public function setAuthor($author)
     {
-        $this->author_name = $author_name;
+        $this->author = $author;
     }
 
     /**
@@ -146,7 +171,7 @@ class Book
             $book .= "<h3>TITLE:"       .$this->title           ."</h3>";
             $book .= "<h3>PUBLISHER:"   .$this->publishers      ."</h3>";
             $book .= "<h4>DATE:"        .$this->publish_date    ."</h4>";
-            $book .= "<h4>AUTHOR:"      .$this->author_name     ."</h4>";
+            $book .= "<h4>AUTHOR:"      .$this->author     ."</h4>";
             $book .= "<h4>ISBN:"        .$this->isbn_10         ."</h4>";
             if($user){
                 $book .= "<h5>USER:"    .$user                  ."</h5>";
@@ -156,6 +181,15 @@ class Book
         return $book;
     }
 
+    function __toString()
+    {
+        return "$this->isbn,
+                $this->title,
+                $this->author,
+                $this->publishers,
+                $this->publish_date,
+                $this->thumbnail_url";
+    }
 
 
 }

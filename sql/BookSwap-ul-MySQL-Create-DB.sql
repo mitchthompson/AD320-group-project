@@ -38,8 +38,8 @@ CREATE TABLE book
   publishers		VARCHAR(100)	NOT NULL,
   publish_date		DATE			NOT NULL,
   thumbnail_url		VARCHAR(255),			
-  CONSTRAINT isbn_10_pk 
-    PRIMARY KEY (isbn_10)
+  CONSTRAINT isbn_pk 
+    PRIMARY KEY (isbn)
 );
 
 CREATE TABLE user_owns_book
@@ -49,7 +49,7 @@ CREATE TABLE user_owns_book
   entry_date        DATE        	NOT NULL,
   delete_date		DATE,
   CONSTRAINT user_book_pk
-    PRIMARY KEY (user_id, isbn_10)
+    PRIMARY KEY (user_id, isbn)
 );
 
 CREATE TABLE user_requests_book
@@ -59,5 +59,5 @@ CREATE TABLE user_requests_book
   entry_date        DATE        	NOT NULL,
   delete_date		DATE,
   CONSTRAINT user_book_pk
-    PRIMARY KEY (user_id, isbn_10)
+    PRIMARY KEY (user_id, isbn)
 );

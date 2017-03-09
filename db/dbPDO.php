@@ -6,9 +6,9 @@
  * Date: 2/22/17
  * Time: 6:14 PM
  */
-class dbPDO
+class dbPDO extends PDO
 {
-    public function __construct($file = 'db_setting.ini')
+    public function __construct($file = 'db/db_settings.ini')
     {
         if (!$settings = parse_ini_file($file, TRUE)) throw new exception('Unable to open ' . $file . '.');
 
