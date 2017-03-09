@@ -1,26 +1,32 @@
 <?php
-//get registration data from registration form
+/*Bonnie Peterson AD320 Project */
 
-$first_name = filter_input(INPUT_POST, 'first_name');
-$last_name = filter_input(INPUT_POST, 'last_name');
-$username = filter_input(INPUT_POST, 'username');
-$password = filter_input(INPUT_POST, 'password');
-$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-$postalcode = filter_input(INPUT_POST, 'postalcode', FILTER_VALIDATE_INT);
-$error_message = '';
+//get data from registration form
+$first_name = '';
+$last_name = '';
+$username = '';
+$password = '';
+$email = '';
+$city = '';
+$state = '';
+$message = '';
 
-//validate all fields entered
 
-if (!isset($first_name) || !isset($last_name) || !isset($username) || !isset($password) || !isset($email) || !isset($postalcode)) {
-	$error_message = "Please complete all fields to register.";
+//form validation
+foreach($_POST as $key=>$value) {
+if(empty($_POST[$key])) {
+$message = "Error: " . ucwords($key) . " field is required";
+break;
+}
 }
 
-//if error message exists, go back to registration page
-
-if ($error_message != '') {
-	include('register.php');
-	exit();
+//email validation
+if(!isset($message)) {
+	if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+		$message = "Invalid email.";
+	}
 }
+
 
 ?>
 <?php include 'includes/header.php'?>
@@ -29,16 +35,15 @@ if ($error_message != '') {
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
+				<p><?php echo $message;?></p>
+				<?php if (!empty($message)){ ?><a href="register.php">Return to registration page</a><?php } ?>
+				<?php if ($message === ''){ ?><a href="login.php">Registration successful! Go to login page</a><?php } ?>
                 </div><!--col-md-12-->
             </div><!--row-->
         </div><!--container-->
     </div><!--jumbotron-->
    
 </main>
-
-
-
-
 </body>
-<?php include 'includes/footer.php' ?>
+
+<?php include 'includes/footer.php'; ?>
