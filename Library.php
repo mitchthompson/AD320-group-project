@@ -30,6 +30,39 @@ SELECT;
             echo 'fetching book...';
             echo $book->getElement();
         }
+        $conn = null;
+        $sth = null;
+
+    }
+
+    public static function getUsersByBook($isbn){
+        $conn = new dbPDO();
+        $stmt = <<<SELECT
+            SELECT u.user_id, b.title
+            FROM ul.user_owns_book u
+            INNER JOIN ul.book b
+            ON u.isbn = b.isbn
+            WHERE u.isbn = ?;
+SELECT;
+
+
+        $sth = $conn->prepare($stmt);
+        $sth->execute([$isbn]);
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+            var_dump($row);
+            echo <<<TABLE
+            <table>
+            <tr><td>USER: $row[user_id]</td></tr>
+            <tr><td>TITLE: $row[title]</td></tr>
+            </table>
+TABLE;
+        }
+
+        $conn = null;
+        $sth = null;
+    }
+
+    public static function insertBookByUser(){
 
     }
 
@@ -44,3 +77,4 @@ SELECT;
 
 
 Library::getBooksByUser(1);
+Library::getUsersByBook(9780980200447);

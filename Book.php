@@ -41,6 +41,9 @@ class Book
                     $this->thumbnail_url = $row['thumbnail_url'];
                 }
 
+                $conn = null;
+                $sth = null;
+
             } catch (PDOException $p) {
                 echo $p->getMessage();
             }
