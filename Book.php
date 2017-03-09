@@ -9,64 +9,153 @@
 class Book
 {
 
-    //sample
-    private static $select = <<<'STMT'
+    private $isbn, $title, $publish_date, $thumbnail_url, $author_name, $publishers;
 
-    SELECT b.isbn_10
-  , b.title
-  , b.publish_date
-  , b.thumbnail_url
-  , a.author_first_name
-  , a.author_last_name
+    /**
+     * Book constructor.
+     *
+     * Should self populate from isbn via DB.  If Db returns null rowset, get from api.
+     *
+     * @param $isbn
+     * @param bool $exists false will call api to fill in the rest
+     */
+    public function __construct($isbn,$exists = true)
+    {
+        $this->isbn = $isbn;
+        if(!$exists){
+            $format = 'format=json';
+            $jsonType = 'jscmd=data';
+            $url = 'https://openlibrary.org/api/books?';
+            $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
 
-    FROM book b
-    INNER JOIN author_book ab
-        on b.isbn_10 = ab.isbn_10
-    INNER JOIN author a
-        on ab.author_id = a.author_id;
-    
-STMT;
-
-
-
-    protected static $isbn_10, $title, $publish_date, $thumbnail_url, $author_first, $author_last;
-
-
-    private function __construct(){}
+            //TODO: error handling
+            $json = json_decode(file_get_contents($url),true);
 
 
+            $this->isbn_10 = $isbn;
+            $this->author_name= $json["ISBN:$isbn"]['authors'][0]['name'];
+            $this->title = $json["ISBN:$isbn"]['title'];
+            $this->publishers = $json["ISBN:$isbn"]['publishers']['name'];
+            $this->publish_date = $json["ISBN:$isbn"]['publish_date'];
+            $this->thumbnail_url = $json["ISBN:$isbn"]['cover']['medium'];
+        }
+    }
 
-    private static function retrieveBook($isbn){
-        $dbPDO = new dbPDO();
-        $stmt = $dbPDO->prepare(self::$select);
-        $stmt->execute([$isbn]);
-        $result =  $stmt->fetchObject(__CLASS__);
+    /**
+     * @return mixed
+     */
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
 
-        //close conn
-        $dbPDO = null;
-        $stmt = null;
+    /**
+     * @param mixed $isbn
+     */
+    public function setIsbn($isbn)
+    {
+        $this->isbn = $isbn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishDate()
+    {
+        return $this->publish_date;
+    }
+
+    /**
+     * @param mixed $publish_date
+     */
+    public function setPublishDate($publish_date)
+    {
+        $this->publish_date = $publish_date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->thumbnail_url;
+    }
+
+    /**
+     * @param mixed $thumbnail_url
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        $this->thumbnail_url = $thumbnail_url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthorName()
+    {
+        return $this->author_name;
+    }
+
+    /**
+     * @param mixed $author_name
+     */
+    public function setAuthorName($author_name)
+    {
+        $this->author_name = $author_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishers()
+    {
+        return $this->publishers;
+    }
+
+    /**
+     * @param mixed $publishers
+     */
+    public function setPublishers($publishers)
+    {
+        $this->publishers = $publishers;
+    }
 
 
-}
-
-
-    public static function getBookData($isbn){
-
-        self::retrieveBook($isbn);
-
+    public function getElement($user=false){
         $book = '<div class="book">';
 
-        if(self::$isbn_10){
-            $book .= "<img src='" . self::$thumbnail_url . "'>'";
-            $book .= "<h3>TITLE:".self::$title."</h3>";
-            $book .= "<h4>DATE:".self::$publish_date."</h4>";
-            $book .= "<h4>AUTHOR:".self::$author_last.", ".self::$author_last."</h4>";
-            $book .= "<h4>ISBN:".self::$isbn_10."</h4>";
-            $book .= "</div>";
+        if($this->isbn){
+            $book .= "<img src='"       .$this->thumbnail_url   . "'/>";
+            $book .= "<h3>TITLE:"       .$this->title           ."</h3>";
+            $book .= "<h3>PUBLISHER:"   .$this->publishers      ."</h3>";
+            $book .= "<h4>DATE:"        .$this->publish_date    ."</h4>";
+            $book .= "<h4>AUTHOR:"      .$this->author_name     ."</h4>";
+            $book .= "<h4>ISBN:"        .$this->isbn_10         ."</h4>";
+            if($user){
+                $book .= "<h5>USER:"    .$user                  ."</h5>";
+            }
         }
-
+        $book .= "</div>";
         return $book;
     }
+
 
 
 }
