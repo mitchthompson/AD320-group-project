@@ -1,26 +1,31 @@
-<?php include 'includes/header.php'?>
+<?php
+//error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
+if (!isset($_SESSION["is_auth"])) {
+	header("location:login.php");
+	exit;
+}
+$name = $_SESSION['user_first_name'];
+$user_id = $_SESSION['user_id'];
+
+include 'Book.php';
+include 'includes/header-user.php';
+
+
+?>
 <main>
     <div class="jumbotron user">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Username's Books</h2>
+                    <h2><?php echo $name ?>'s Books</h2>
                 </div>
-                <div class="col-md-3"></div>
-                <div class="col-sm-6 col-md-5 sort">
-                    <form action="sort.php" method="post">
-                            <div class="col-sm-6 col-md-5">
-                                <select class="form-control form-control-lg" name="cars">
-                                  <option value="" disabled selected>Sort books by..</option>
-                                  <option value="Title">Title</option>
-                                  <option value="Author">Author</option>
-                                </select>
-                            </div><!--col-md-6-->
-                            <div class="col-sm-6 col-md-6">
-                                <input class="btn btn-secondary btn-block" type="submit" value="Sort">
-                            </div> <!--col-md-6-->
-                    </form>
-                </div><!--col-md-6-->
+               
+                
             </div><!--row-->
         </div><!--container-->
     </div><!--jumbotron user-->
@@ -49,9 +54,14 @@
                         </div>
                       </a>    
                     </div><!--list-group-->
+                    <div class="row">
+                    <div class="col-md-12">
+                        <input class="btn btn-secondary btn-block" name="addBook" type="submit" value="Add to Library">
+                    </div>
+                    </div>
                 </div><!--col-md-6-->
                 <div class="col-lg-6">
-                    <p class="text-center">Looking for...</p>
+                    <p class="text-center">Requesting</p>
                     <div class="list-group">
                       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
@@ -72,6 +82,11 @@
                         </div>
                       </a>    
                     </div><!--list-group-->
+                    <div class="row">
+                    <div class="col-md-12">
+                        <input class="btn btn-secondary btn-block" name="addRequesting" type="submit" value="Add to Requesting">
+                    </div>
+                    </div>
                 </div><!--col-md-6-->
             </div><!--end row-->
         </div><!--container-->
