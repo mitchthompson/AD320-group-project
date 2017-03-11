@@ -10,8 +10,6 @@ include 'Book.php';
 class Library
 {
 
-    private $userid;
-
     private function __Construct(){}
 
     public static function getBooksByUser($user_id){
