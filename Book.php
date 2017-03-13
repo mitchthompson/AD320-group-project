@@ -189,6 +189,7 @@ class Book
         }
         $book .= "</div>";
         $book .= "</a>";
+        return $book;
     }
 
     function __toString()
