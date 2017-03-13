@@ -12,7 +12,7 @@ if (!isset($_SESSION["is_auth"])) {
 $name = $_SESSION['user_first_name'];
 $user_id = $_SESSION['user_id'];
 
-include 'Book.php';
+include 'Library.php';
 include 'includes/header-user.php';
 
 
@@ -35,24 +35,7 @@ include 'includes/header-user.php';
                 <div class="col-lg-6 library">
                     <p class="text-center">Library</p>
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>    
+                      <?php Library::getBooksByUser($user_id); ?>
                     </div><!--list-group-->
                     <div class="row">
                     <div class="col-md-12">
@@ -63,24 +46,7 @@ include 'includes/header-user.php';
                 <div class="col-lg-6">
                     <p class="text-center">Requesting</p>
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>
-                      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Book Title</h5>
-                          <small>Author</small>
-                        </div>
-                      </a>    
+                      <?php Library::getRequestsByUser($user_id); ?>
                     </div><!--list-group-->
                     <div class="row">
                     <div class="col-md-12">
