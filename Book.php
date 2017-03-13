@@ -27,7 +27,7 @@ class Book
         $this->isbn = $isbn;
         //$exists = false;
         if($this->isbn){
-            echo 'Book exists, fetching from db.';
+            //echo 'Book exists, fetching from db.';
             try {
                 $conn = new dbPDO();
                 $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
@@ -50,7 +50,7 @@ class Book
         }
 
         else{
-            echo 'Book does not exist, trying from API';
+            //echo 'Book does not exist, trying from API';
             $format = 'format=json';
             $jsonType = 'jscmd=data';
             $url = 'https://openlibrary.org/api/books?';
@@ -175,18 +175,20 @@ class Book
         $book = '<div class="book">';
 
         if($this->isbn){
+           $book .= "<a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">";
+            $book .= "<div class=\"d-flex w-100 justify-content-between\">";
             $book .= "<img src='"       .$this->thumbnail_url   . "'/>";
-            $book .= "<h3>TITLE:"       .$this->title           ."</h3>";
-            $book .= "<h3>PUBLISHER:"   .$this->publishers      ."</h3>";
-            $book .= "<h4>DATE:"        .$this->publish_date    ."</h4>";
-            $book .= "<h4>AUTHOR:"      .$this->author     ."</h4>";
-            $book .= "<h4>ISBN:"        .$this->isbn         ."</h4>";
+            $book .= "<h5 class=\"mb-1\">Title:  "       .$this->title           ."</h5>";
+            $book .= "<small>Author:  "      .$this->author     ."<br></small>";
+            $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
+            $book .= "<small>Date Published:  "        .$this->publish_date    ."<br></small>";
+            $book .= "<small>ISBN:  "        .$this->isbn         ."<br></small>";
             if($user){
                 $book .= "<h5>USER:"    .$user                  ."</h5>";
             }
         }
         $book .= "</div>";
-        return $book;
+        $book .= "</a>";
     }
 
     function __toString()
