@@ -14,11 +14,11 @@ $message = '';
 ?>
 
 <main>
-<h1>Please complete all fields to sign up for BookSwap:</h1>
     <div class="jumbotron intro">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
+                    <p>Please complete all fields to sign up for BookSwap:</p>
                     <form action="registration.php" method="post">
 							<div class="form-group">
                                 <input class="form-control" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" name="first_name" value="<?php if(isset($_POST['first_name'])) echo $_POST['first_name']; ?>">

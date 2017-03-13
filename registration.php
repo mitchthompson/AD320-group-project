@@ -14,6 +14,7 @@ $state = '';
 $message = '';
 
 
+$pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 //form validation
 foreach($_POST as $key=>$value) {
 if(empty($_POST[$key])) {
@@ -51,13 +52,18 @@ if(!isset($message)) {
 
 try {
     $conn = new dbPDO();
+
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "INSERT INTO user (user_city, user_email, user_first_name, user_last_name, user_password, user_state) VALUES
-('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . ($_POST["last_name"]) . "', '" . $_POST["password"] . "', '" . $_POST["state"] . "')";
+('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . ($_POST["last_name"]) . "', '" . $pass . "', '" . $_POST["state"] . "')";
     // use exec() because no results are returned
     $conn->exec($sql);
+<<<<<<< Updated upstream
     //echo "New record created successfully";
+=======
+//    echo "New record created successfully";
+>>>>>>> Stashed changes
     }
 catch(PDOException $e)
     {

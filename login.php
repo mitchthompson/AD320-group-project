@@ -1,6 +1,4 @@
 <?php 
-//TODO - update DB credentials on db_settings.ini file
-
 session_start();
 include 'includes/header.php';
 include 'db/dbPDO.php';
@@ -16,21 +14,29 @@ if (isset($_POST['submit'])){
     $password = $_POST['password'];
     
     
+    
     try {
     $conn = new dbPDO();
-    $query = $conn->prepare("SELECT * FROM `user` WHERE user_email='$username' and user_password='$password'");
+    $query = $conn->prepare("SELECT * FROM `user` WHERE user_email='$username'");
     $query->execute();
     $row = $query->rowCount();
-    
+
+    while($rows = $query->fetch(PDO::FETCH_ASSOC)) {
+            $user_id = $rows['user_id'];
+            $name = $rows['user_first_name'];
+            $hashed_password = $rows['user_password'];
+   
+    }
+
+        
+    $verify = password_verify('' . $password . '','' . $hashed_password . '');
+        
+            
     //if username/password found
-    if ($row == 1){
-        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $_SESSION['is_auth'] = true;
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['user_first_name'] = $row['user_first_name'];
-        }
-        $user_id = $_SESSION['user_id'];
-        $name = $_SESSION['user_first_name'];
+    if ($row == 1 and $verify){
+        $_SESSION['is_auth'] = true;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['user_first_name'] = $name;
         echo  ' <div class="jumbotron">
                 <div class="container">
                 <div class="text-center col-md-12">

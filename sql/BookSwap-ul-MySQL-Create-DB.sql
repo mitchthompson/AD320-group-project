@@ -23,7 +23,7 @@ CREATE TABLE user
   user_city          VARCHAR(20)		NOT NULL,
   user_state        VARCHAR(2)    NOT NULL,
   user_email		VARCHAR(50)		NOT NULL,
-  user_password		VARCHAR(20)		NOT NULL,
+  user_password		VARCHAR(255)		NOT NULL,
   CONSTRAINT user_pk 
     PRIMARY KEY (user_id),
   CONSTRAINT user_email_unq
