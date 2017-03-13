@@ -1,5 +1,7 @@
 <?php
 /*Bonnie Peterson AD320 Project */
+//TODO - update DB credentials in db/db_settings.ini file
+include 'db/dbPDO.php';
 
 //get data from registration form
 $first_name = '';
@@ -10,10 +12,6 @@ $email = '';
 $city = '';
 $state = '';
 $message = '';
-$servername = "localhost";
-$username = "icoolsho_bpeters";
-$password = "$!985-85-9589";
-$dbname = "icoolsho_bpeterson";
 
 
 //form validation
@@ -52,7 +50,7 @@ if(!isset($message)) {
 <?php
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new dbPDO();
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "INSERT INTO user (user_city, user_email, user_first_name, user_last_name, user_password, user_state) VALUES
