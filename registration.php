@@ -10,6 +10,10 @@ $email = '';
 $city = '';
 $state = '';
 $message = '';
+$servername = "localhost";
+$username = "icoolsho_bpeters";
+$password = "$!985-85-9589";
+$dbname = "icoolsho_bpeterson";
 
 
 //form validation
@@ -27,7 +31,6 @@ if(!isset($message)) {
 	}
 }
 
-
 ?>
 <?php include 'includes/header.php'?>
 <main>
@@ -38,12 +41,32 @@ if(!isset($message)) {
 				<p><?php echo $message;?></p>
 				<?php if (!empty($message)){ ?><a href="register.php">Return to registration page</a><?php } ?>
 				<?php if ($message === ''){ ?><a href="login.php">Registration successful! Go to login page</a><?php } ?>
-                </div><!--col-md-12-->
+                <p><?php echo $message2; ?></p>
+				</div><!--col-md-12-->
             </div><!--row-->
         </div><!--container-->
     </div><!--jumbotron-->
    
 </main>
 </body>
+<?php
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO user (user_city, user_email, user_first_name, user_last_name, user_password, user_state) VALUES
+('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . ($_POST["last_name"]) . "', '" . $_POST["password"] . "', '" . $_POST["state"] . "')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+
+$conn = null;
+?>
 
 <?php include 'includes/footer.php'; ?>
