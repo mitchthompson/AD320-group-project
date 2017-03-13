@@ -39,7 +39,7 @@ if(!isset($message)) {
 				<p><?php echo $message;?></p>
 				<?php if (!empty($message)){ ?><a href="register.php">Return to registration page</a><?php } ?>
 				<?php if ($message === ''){ ?><a href="login.php">Registration successful! Go to login page</a><?php } ?>
-                <p><?php echo $message2; ?></p>
+                <p><?php echo $message; ?></p>
 				</div><!--col-md-12-->
             </div><!--row-->
         </div><!--container-->
@@ -57,7 +57,7 @@ try {
 ('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . ($_POST["last_name"]) . "', '" . $_POST["password"] . "', '" . $_POST["state"] . "')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "New record created successfully";
+    //echo "New record created successfully";
     }
 catch(PDOException $e)
     {
