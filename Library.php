@@ -25,7 +25,7 @@ SELECT;
         $sth->execute([$user_id]);
         while($row = $sth->fetch(PDO::FETCH_ASSOC)){
             $book = new Book($row['isbn']);
-            echo 'fetching book...';
+            //echo 'fetching book...';
             echo $book->getElement();
         }
         $conn = null;
