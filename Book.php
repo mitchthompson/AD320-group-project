@@ -18,9 +18,7 @@ class Book
      * Book constructor.
      *
      * Should self populate from isbn via DB.  If Db returns null rowset, get from api.
-     *
      * @param $isbn
-     * @param bool $exists false will call api to fill in the rest
      */
     public function __construct($isbn)
     {
