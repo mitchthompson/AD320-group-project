@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Morbi erat nisl, ultricies a lobortis ac, varius hendrerit risus. Donec sed consequat elit. Fusce suscipit tortor sit amet dui sodales condimentum. In auctor, mi sed lobortis tempor, tellus purus sagittis est, sed aliquam ex sapien vitae augue. Etiam ut ultrices sapien. Suspendisse bibendum turpis sit amet risus dapibus fermentum. Cras viverra felis justo, ac vehicula odio hendrerit in. Aenean in commodo lectus.</p>
+                    <p>Welcome to the BookSwap community, the online lending library! Users can trade books with one another and list books that they are willing to loan out. Choose from a large library of books while sharing with others. Here you can search for a book or sign up to get started.</p>
                 </div><!--end col-lg-12-->
                 <div class="col-md-12 user-btn">
                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-lg-4 col-sm-4 col-xs-6">
