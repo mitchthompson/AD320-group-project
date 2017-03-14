@@ -59,11 +59,6 @@ try {
 ('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . ($_POST["last_name"]) . "', '" . $pass . "', '" . $_POST["state"] . "')";
     // use exec() because no results are returned
     $conn->exec($sql);
-<<<<<<< Updated upstream
-    //echo "New record created successfully";
-=======
-//    echo "New record created successfully";
->>>>>>> Stashed changes
     }
 catch(PDOException $e)
     {

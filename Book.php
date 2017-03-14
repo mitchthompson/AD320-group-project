@@ -172,23 +172,22 @@ class Book
 
 
     public function getElement($user=false){
-        $book = '<div class="book">';
+        $book = '<li style="margin-right:3%">';
 
-        if($this->isbn){
-           $book .= "<a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">";
-            $book .= "<div class=\"d-flex w-100 justify-content-between\">";
-            $book .= "<img src='"       .$this->thumbnail_url   . "'/>";
-            $book .= "<h5 class=\"mb-1\">Title:  "       .$this->title           ."</h5>";
+        if($this->isbn){ 
+           
+            
+            $book .= "<img class=\"img-thumbnail\" src='"       .$this->thumbnail_url   . "'/>";
+            $book .= "<h5>Title:  "       .$this->title           ."</h5>";
             $book .= "<small>Author:  "      .$this->author     ."<br></small>";
             $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
-            $book .= "<small>Date Published:  "        .$this->publish_date    ."<br></small>";
             $book .= "<small>ISBN:  "        .$this->isbn         ."<br></small>";
             if($user){
                 $book .= "<h5>USER:"    .$user                  ."</h5>";
             }
         }
-        $book .= "</div>";
-        $book .= "</a>";
+        $book .= "</li>";
+        
         return $book;
     }
 

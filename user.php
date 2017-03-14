@@ -32,22 +32,24 @@ include 'includes/header-user.php';
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 library">
-                    <p class="text-center">Library</p>
-                    <div class="list-group">
+                <div class="col-lg-12 library">
+                    <h3 class="text-center">Library</h3>
+                    
+                        <ul class="list-inline">
                       <?php Library::getBooksByUser($user_id); ?>
-                    </div><!--list-group-->
+                        </ul>
+                 
                     <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="margin-bottom: 30px">
                         <input class="btn btn-secondary btn-block" name="addBook" type="submit" value="Add to Library">
                     </div>
                     </div>
-                </div><!--col-md-6-->
-                <div class="col-lg-6">
-                    <p class="text-center">Requesting</p>
-                    <div class="list-group">
+                </div><!--col-md-12-->
+                <div class="col-lg-12">
+                    <h3 class="text-center">Requesting</h3>
+                    <ul class="list-inline">
                       <?php Library::getRequestsByUser($user_id); ?>
-                    </div><!--list-group-->
+                    </ul>
                     <div class="row">
                     <div class="col-md-12">
                         <input class="btn btn-secondary btn-block" name="addRequesting" type="submit" value="Add to Requesting">
