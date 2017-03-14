@@ -35,7 +35,6 @@ class Book
                     $this->author = $book['author'];
                     $this->title =  $book['title'];
                     $this->publishers = $book['publishers'];
-                    //var_dump($json["ISBN:$isbn"]['publishers']);
                     $this->publish_date = $book['publish_date'];
                     $this->thumbnail_url = $book['thumbnail_url'];
                 }else{$this->getBookFromAPI($isbn);}
@@ -57,18 +56,15 @@ class Book
         $url = 'https://openlibrary.org/api/books?';
         $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
 
-        //TODO: error handling
-        $json = @json_decode(file_get_contents($url),true);
-        if($json === FALSE){
+        $json = json_decode(@file_get_contents($url),true);
+        if($json === FALSE || empty($json["ISBN:$isbn"])){
             echo "Book does not exist.";
         }else {
-
-            $this->author = $json["ISBN:$isbn"]['authors'][0]['name'];
-            $this->title = $json["ISBN:$isbn"]['title'];
-            $this->publishers = $json["ISBN:$isbn"]['publishers'][0]['name'];
-            //var_dump($json["ISBN:$isbn"]['publishers']);
-            $this->publish_date = $json["ISBN:$isbn"]['publish_date'];
-            $this->thumbnail_url = $json["ISBN:$isbn"]['cover']['medium'];
+                $this->author = $json["ISBN:$isbn"]['authors'][0]['name'];
+                $this->title = $json["ISBN:$isbn"]['title'];
+                $this->publishers = $json["ISBN:$isbn"]['publishers'][0]['name'];
+                $this->publish_date = $json["ISBN:$isbn"]['publish_date'];
+                $this->thumbnail_url = $json["ISBN:$isbn"]['cover']['medium'];
         }
     }
 
@@ -172,7 +168,7 @@ class Book
     public function getElement($user=false){
         $book = '<li style="margin-right:3%">';
 
-        if($this->isbn){
+        if($this->title){
 
 
             $book .= "<img class=\"img-thumbnail\" src='"       .$this->thumbnail_url   . "'/>";
@@ -198,6 +194,18 @@ class Book
                 $this->publish_date,
                 $this->thumbnail_url";
     }
-
-
 }
+
+
+$book = new Book('0553380958');
+
+echo $book->getElement();
+
+$book = new Book('9780980200447');
+echo $book->getElement();
+
+$book = new Book('0441117732');
+echo $book->getElement();
+
+$book = new BOOK('1508636338');
+ECHO $book->getElement();
