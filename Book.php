@@ -195,17 +195,3 @@ class Book
                 $this->thumbnail_url";
     }
 }
-
-
-$book = new Book('0553380958');
-
-echo $book->getElement();
-
-$book = new Book('9780980200447');
-echo $book->getElement();
-
-$book = new Book('0441117732');
-echo $book->getElement();
-
-$book = new BOOK('1508636338');
-ECHO $book->getElement();
