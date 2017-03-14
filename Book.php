@@ -20,58 +20,54 @@ class Book
      * Should self populate from isbn via DB.  If Db returns null rowset, get from api.
      *
      * @param $isbn
-     * @param bool $exists false will call api to fill in the rest
      */
     public function __construct($isbn)
     {
         $this->isbn = $isbn;
-        //$exists = false;
-        if($this->isbn){
-            //echo 'Book exists, fetching from db.';
-            try {
-                $conn = new dbPDO();
-                $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
-                $sth->execute([$this->isbn]);
-                while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-                    $this->author = $row['author'];
-                    $this->title =  $row['title'];
-                    $this->publishers = $row['publishers'];
-                    //var_dump($json["ISBN:$isbn"]['publishers']);
-                    $this->publish_date = $row['publish_date'];
-                    $this->thumbnail_url = $row['thumbnail_url'];
-                }
+        try {
+            $conn = new dbPDO();
+            $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
+            $sth->execute([$this->isbn]);
 
-                $conn = null;
-                $sth = null;
-
-            } catch (PDOException $p) {
-                echo $p->getMessage();
+            $book = $sth->fetch(PDO::FETCH_ASSOC);
+            if ($book) {
+                $this->author = $book['author'];
+                $this->title = $book['title'];
+                $this->publishers = $book['publishers'];
+                //var_dump($json["ISBN:$isbn"]['publishers']);
+                $this->publish_date = $book['publish_date'];
+                $this->thumbnail_url = $book['thumbnail_url'];
+            } else {
+                $this->getBookFromAPI($isbn);
             }
+        } catch (PDOException $p) {
+            echo $p->getMessage();
         }
-
-        else{
-            //echo 'Book does not exist, trying from API';
-            $format = 'format=json';
-            $jsonType = 'jscmd=data';
-            $url = 'https://openlibrary.org/api/books?';
-            $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
-
-            echo $url;
-
-            //TODO: error handling
-            $json = json_decode(file_get_contents($url),true);
+        $conn = null;
+        $sth = null;
 
 
-            $this->isbn_10 = $isbn;
-            $this->author =         $json["ISBN:$isbn"]['authors'][0]['name'];
-            $this->title =          $json["ISBN:$isbn"]['title'];
-            $this->publishers =     $json["ISBN:$isbn"]['publishers'][0]['name'];
+    }
+
+    private function getBookFromAPI($isbn){
+        //echo 'Book does not exist, trying from API';
+        $format = 'format=json';
+        $jsonType = 'jscmd=data';
+        $url = 'https://openlibrary.org/api/books?';
+        $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
+
+        $json = @json_decode(file_get_contents($url),true);
+        if($json === FALSE){
+            echo "Book does not exist";
+        }else {
+
+            $this->author = $json["ISBN:$isbn"]['authors'][0]['name'];
+            $this->title = $json["ISBN:$isbn"]['title'];
+            $this->publishers = $json["ISBN:$isbn"]['publishers'][0]['name'];
             //var_dump($json["ISBN:$isbn"]['publishers']);
-            $this->publish_date =   $json["ISBN:$isbn"]['publish_date'];
-            $this->thumbnail_url =  $json["ISBN:$isbn"]['cover']['medium'];
-
+            $this->publish_date = $json["ISBN:$isbn"]['publish_date'];
+            $this->thumbnail_url = $json["ISBN:$isbn"]['cover']['medium'];
         }
-
     }
 
     /**
@@ -177,14 +173,14 @@ class Book
         if($this->isbn){
            $book .= "<a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\">";
             $book .= "<div class=\"d-flex w-100 justify-content-between\">";
-            $book .= "<img src='"       .$this->thumbnail_url   . "'/>";
-            $book .= "<h5 class=\"mb-1\">Title:  "       .$this->title           ."</h5>";
-            $book .= "<small>Author:  "      .$this->author     ."<br></small>";
-            $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
-            $book .= "<small>Date Published:  "        .$this->publish_date    ."<br></small>";
-            $book .= "<small>ISBN:  "        .$this->isbn         ."<br></small>";
+            $book .= "<img src='"                   .$this->thumbnail_url   . "'/>";
+            $book .= "<h5 class=\"mb-1\">Title:  "  .$this->title           ."</h5>";
+            $book .= "<small>Author:  "             .$this->author          ."<br></small>";
+            $book .= "<small>Publisher:  "          .$this->publishers      ."<br></small>";
+            $book .= "<small>Date Published:  "     .$this->publish_date    ."<br></small>";
+            $book .= "<small>ISBN:  "               .$this->isbn            ."<br></small>";
             if($user){
-                $book .= "<h5>USER:"    .$user                  ."</h5>";
+                $book .= "<h5>USER:"                .$user                  ."</h5>";
             }
         }
         $book .= "</div>";

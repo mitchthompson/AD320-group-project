@@ -72,7 +72,7 @@ SELECT;
         while($row = $sth->fetch(PDO::FETCH_ASSOC)){
             var_dump($row);
             echo <<<TABLE
-            <table>
+            <table class="table-striped">
             <tr><td>USER: $row[user_first_name]</td></tr>
             <tr><td>TITLE: $row[title]</td></tr>
             </table>
