@@ -60,15 +60,13 @@ try {
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT user_email FROM user"); 
+    $stmt = $conn->prepare("SELECT user_email FROM user WHERE user_email = $_POST["email""); 
     $stmt->execute();
 
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
-        echo $v;
-    }
-	if ($v = $_POST["email"]) {
+    $row = $result->rowCount();
+	if ($row > 0) {
 		$message = "This email is already registered. Please return to the login page.";
 	}
 	else {
