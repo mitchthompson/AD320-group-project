@@ -111,6 +111,13 @@ INSERT;
         $conn = null;
         $sth = null;
     }
+    
+    public static function getBook($isbn){
+
+            $book = new Book($isbn);
+            //echo 'fetching book...';
+            echo $book->getElement();
+        }
 
     public static function insertBook($isbn, $user_id){}
 
