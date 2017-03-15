@@ -121,12 +121,6 @@ INSERT;
 
     public static function insertBook($isbn, $user_id){}
 
-    public static function getBook($isbn){
-
-        $book = new Book($isbn);
-        return $book->getElement();
-
-    }
 }
 
 
