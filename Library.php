@@ -91,9 +91,21 @@ SELECT;
         while($row = $sth->fetch(PDO::FETCH_ASSOC)){
             var_dump($row);
             echo <<<TABLE
-            <table class="table-striped">
-            <tr><td>USER: $row[user_first_name]</td></tr>
-            <tr><td>TITLE: $row[title]</td></tr>
+             <table class="table">
+             <thead class="thead-default">
+                <tr>
+                    <th>Email</th>
+                    <th>City</th> 
+                    <th>State</th>
+                </tr>  
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$row[user_email]</td>
+                    <td>$row[user_city]</td>
+                    <td>$row[user_state]</td>
+                </tr> 
+              </tbody>       
             </table>
 TABLE;
         }
