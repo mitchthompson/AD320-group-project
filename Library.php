@@ -86,6 +86,13 @@ TABLE;
     public static function insertBookByUser(){
 
     }
+    
+    public static function getBook($isbn){
+
+            $book = new Book($isbn);
+            //echo 'fetching book...';
+            echo $book->getElement();
+        }
 
 }
 
