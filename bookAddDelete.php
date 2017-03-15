@@ -21,6 +21,8 @@ if(isset($_POST['submit'])){
 include 'Library.php';
 include 'includes/header-user.php';
 
+$message = '';
+
 if($_POST['add_delete'] == 'delete'){
     try {
         $conn = new dbPDO();
@@ -28,7 +30,8 @@ if($_POST['add_delete'] == 'delete'){
         $query->execute();
         $conn = null;
         $sth = null;
-        echo 'deleted';
+        
+        $message = "This book deleted successfully!";
 
     } catch (PDOException $p) {
         echo $p->getMessage();
@@ -44,8 +47,10 @@ if($_POST['add_delete'] == 'delete'){
                 <div class="col-md-12">
                     <h2>ISBN <?php echo $isbn; ?></h2>
                     <h2>Location <?php echo $library_choice; ?></h2>
-                    <h2>Add or Delete? <?php echo $add_delete; ?>
-                    </h2>
+                    <h2>Add or Delete? <?php echo $add_delete; ?></h2>
+                    <h2><?php echo $message; ?></h2>
+                        <?php Library::getBook($isbn); ?>
+                    
                 
                 </div>
             </div><!--row-->
