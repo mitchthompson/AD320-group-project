@@ -33,6 +33,25 @@ SELECT;
 
     }
 
+    public static function getLibrary(){
+
+        $conn = new dbPDO();
+        $stmt = <<<SELECT
+            SELECT *
+            FROM ul.book;
+SELECT;
+
+        $sth = $conn->prepare($stmt);
+        $sth->execute();
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+            $book = new Book($row['isbn']);
+            //echo 'fetching book...';
+            echo $book->getElement();
+        }
+        $conn = null;
+        $sth = null;
+    }
+
     public static function getRequestsByUser($user_id){
 
         $conn = new dbPDO();
