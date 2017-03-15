@@ -33,6 +33,25 @@ SELECT;
 
     }
 
+    public static function getLibrary(){
+
+        $conn = new dbPDO();
+        $stmt = <<<SELECT
+            SELECT *
+            FROM ul.book;
+SELECT;
+
+        $sth = $conn->prepare($stmt);
+        $sth->execute();
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+            $book = new Book($row['isbn']);
+            //echo 'fetching book...';
+            echo $book->getElement();
+        }
+        $conn = null;
+        $sth = null;
+    }
+
     public static function getRequestsByUser($user_id){
 
         $conn = new dbPDO();
@@ -83,8 +102,33 @@ TABLE;
         $sth = null;
     }
 
-    public static function insertBookByUser(){
+    public static function insertRequest($isbn, $user_id){
+        $book = new Book($isbn);
+        $title = $book->getTitle();
+        $author = $book->getAuthor();
+        $publishers = $book->getPublishers();
+        $publish_date = $book->getPublishDate();
+        $thumbnail_url = $book->getThumbnailUrl();
 
+        $conn = new dbPDO();
+
+            $stmt = <<<INSERT
+           
+                INSERT INTO user_requests_book (user_id, isbn)
+                    VALUES($user_id, $isbn);
+                INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
+                    VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
+                
+INSERT;
+        echo $stmt;
+            $sth = $conn->prepare($stmt);
+        try {
+            $sth->execute();
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        $conn = null;
+        $sth = null;
     }
     
     public static function getBook($isbn){
@@ -94,7 +138,11 @@ TABLE;
             echo $book->getElement();
         }
 
+    public static function insertBook($isbn, $user_id){}
+
 }
+
+
 
 /**
  *
@@ -106,3 +154,5 @@ TABLE;
 
 //Library::getBooksByUser(1);
 //Library::getUsersByBook(9780980200447);
+//Library::insertRequest('9780553380958','2');
+//9780553380958
