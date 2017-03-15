@@ -3,7 +3,7 @@
 //TODO - update DB credentials in db/db_settings.ini file
 include 'db/dbPDO.php';
 
-//get data from registration form
+//set variables
 $first_name = '';
 $last_name = '';
 $username = '';
@@ -13,7 +13,7 @@ $city = '';
 $state = '';
 $message = '';
 
-
+//create password hash
 $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 //form validation
 foreach($_POST as $key=>$value) {
@@ -32,6 +32,8 @@ if(!isset($message)) {
 
 ?>
 <?php include 'includes/header.php'?>
+
+<!--display links to direct user to login page or to return to register page if errors present-->
 <main>
     <div class="jumbotron user">
         <div class="container">
@@ -50,6 +52,7 @@ if(!isset($message)) {
 </body>
 <?php
 
+//insert user data into 'user' SQL table
 try {
     $conn = new dbPDO();
 
