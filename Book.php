@@ -22,7 +22,7 @@ class Book
      */
     public function __construct($isbn)
     {
-        $this->isbn = $isbn;
+        $this->isbn = "$isbn";
             try {
                 $conn = new dbPDO();
                 $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
