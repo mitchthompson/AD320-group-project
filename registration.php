@@ -13,6 +13,7 @@ $city = '';
 $state = '';
 $message = '';
 
+
 //create password hash
 $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 //form validation
