@@ -7,13 +7,15 @@
                     <form action="search.php" method="post">
                             <div class="col-md-3">
                                 <select class="form-control form-control-lg" name="search_type">
-                                  <option value="" disabled selected>Choose...</option>
-                                    <option value="Title">Title</option>
+                                   <!--<option value="" disabled selected>Choose...</option>-->
+                                     <!--<option value="Title">Title</option>-->
                                   <option value="ISBN">ISBN</option>
                                 </select>
                             </div><!--col-md-3-->
+                    </form>    
+                    <form action="search.php" method="post">    
                             <div class="col-md-5">
-                                <input class="form-control" type="text" placeholder="Look for book..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Look for book...'" id="user-search">
+                                <input class="form-control form-control-lg" type="text" placeholder="Look for book..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Look for book...'" name="isbn" value="<?php if(isset($_POST['isbn'])) echo htmlspecialchars($_POST['isbn']); ?>">
                             </div><!--col-md-5-->
                             <div class="col-md-4">
                                 <input class="btn btn-secondary btn-block" type="submit" value="Search">
