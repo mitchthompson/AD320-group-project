@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="bookAddDelete.php" method="post">
+                    <form action="search.php" method="post">
                             <div class="col-md-3">
                                 <select class="form-control form-control-lg" name="search_type">
                                   <option value="" disabled selected>Choose...</option>

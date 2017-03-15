@@ -33,7 +33,8 @@
                      <a class="navbar-brand" href="./index.php">BookSwap</a>
                   </div><!--navbar-header -->
                 <div class="navbar-collapse collaspe collapse"  id="myNav">                               
-                    <ul class="nav navbar-nav navbar-right">      
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./profile.php">Profile</a></li> 
                         <li><a href="./logout.php">Log Out</a></li>    
                     </ul> 
                 </div><!-- collaspe navbar-collapse -->
