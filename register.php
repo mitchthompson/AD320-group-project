@@ -1,5 +1,5 @@
-<?php include 'includes/header.php'?>
-<?php 
+<?php include 'includes/header.php';
+
 //set default values for variables
 $first_name = '';
 $last_name = '';
@@ -26,11 +26,6 @@ $message = '';
 							<div class="form-group">
 							<b>Last Name </b><br>
                                 <input class="form-control" type="text" name="last_name" value="<?php if(isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
-                            </div>
-							<br>
-							<div class="form-group">
-							<b>Username </b><br>
-                                <input class="form-control" type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>">
                             </div>
 							<br>
                             <div class="form-group">
