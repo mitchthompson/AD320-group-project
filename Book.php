@@ -53,7 +53,6 @@ class Book
         $jsonType = 'jscmd=data';
         $url = 'https://openlibrary.org/api/books?';
         $url .= 'bibkeys=ISBN:' . $isbn . "&" . $jsonType . "&" . $format;
-
         $json = json_decode(@file_get_contents($url),true);
         if($json === FALSE || empty($json["ISBN:$isbn"])){
             echo "Book does not exist.";
@@ -183,6 +182,10 @@ class Book
         return $book;
     }
 
+    public function isEmpty(){
+        return $this->getTitle() == '';
+    }
+
     function __toString()
     {
         return "$this->isbn,
@@ -193,3 +196,4 @@ class Book
                 $this->thumbnail_url";
     }
 }
+

@@ -83,11 +83,46 @@ TABLE;
         $sth = null;
     }
 
-    public static function insertBookByUser(){
+    public static function insertRequest($isbn, $user_id){
+        $book = new Book($isbn);
+        $title = $book->getTitle();
+        $author = $book->getAuthor();
+        $publishers = $book->getPublishers();
+        $publish_date = $book->getPublishDate();
+        $thumbnail_url = $book->getThumbnailUrl();
 
+        $conn = new dbPDO();
+
+            $stmt = <<<INSERT
+           
+                INSERT INTO user_requests_book (user_id, isbn)
+                    VALUES($user_id, $isbn);
+                INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
+                    VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
+                
+INSERT;
+        echo $stmt;
+            $sth = $conn->prepare($stmt);
+        try {
+            $sth->execute();
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        $conn = null;
+        $sth = null;
     }
 
+    public static function insertBook($isbn, $user_id){}
+
+    public static function getBook($isbn){
+
+        $book = new Book($isbn);
+        return $book->getElement();
+
+    }
 }
+
+
 
 /**
  *
@@ -99,3 +134,5 @@ TABLE;
 
 //Library::getBooksByUser(1);
 //Library::getUsersByBook(9780980200447);
+//Library::insertRequest('9780553380958','2');
+//9780553380958
