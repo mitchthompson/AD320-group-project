@@ -19,37 +19,37 @@ $message = '';
                     <p>Please complete all fields to sign up for BookSwap:</p>
                     <form action="registration.php" method="post">
 							<div class="form-group">
-							<b>First Name: </b><br>
+							<b>First Name </b><br>
                                 <input class="form-control" type="text" name="first_name" value="<?php if(isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
                             </div>
 							<br>
 							<div class="form-group">
-							<b>Last Name: </b><br>
+							<b>Last Name </b><br>
                                 <input class="form-control" type="text" name="last_name" value="<?php if(isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
                             </div>
 							<br>
 							<div class="form-group">
-							<b>Username: </b><br>
+							<b>Username </b><br>
                                 <input class="form-control" type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>">
                             </div>
 							<br>
                             <div class="form-group">
-							<b>Password: </b><br>
+							<b>Password </b><br>
                                 <input class="form-control" type="text" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password']; ?>">
                             </div>
 							<br>
                             <div class="form-group">
-							<b>Email: </b><br>
+							<b>Email </b><br>
                                 <input class="form-control" type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>">
                             </div>
 							<br>
 							<div class="form-group">
-							<b>City: </b><br>
+							<b>City </b><br>
                                 <input class="form-control" type="text" name="city" value="<?php if(isset($_POST['city'])) echo $_POST['city']; ?>">
                             </div>
 							<br>
                             <div class="form-group">
-							<b>State: </b><br>
+							<b>State </b><br>
                                 <input class="form-control" type="text" name="state" value="<?php if(isset($_POST['state'])) echo $_POST['state']; ?>">
                             </div>
 							<br>
