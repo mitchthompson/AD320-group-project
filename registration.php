@@ -6,7 +6,6 @@ include 'db/dbPDO.php';
 //set variables
 $first_name = '';
 $last_name = '';
-$username = '';
 $password = '';
 $email = '';
 $city = '';
@@ -31,8 +30,8 @@ if(!isset($message)) {
 	}
 }
 
-?>
-<?php include 'includes/header.php'?>
+
+include 'includes/header.php'?>
 
 <!--display links to direct user to login page or to return to register page if errors present-->
 <main>
@@ -71,6 +70,6 @@ catch(PDOException $e)
     }
 
 $conn = null;
-?>
 
-<?php include 'includes/footer.php'; ?>
+
+include 'includes/footer.php'; ?>
