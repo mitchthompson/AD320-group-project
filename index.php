@@ -6,24 +6,7 @@ include 'Library.php';
 ?>
 
 <main>
-    <!--  display library of available titles -->
-    <div class="jumbotron user">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text-center">Browse Library</h3>
-                    <div class="table-responsive" overflow>
-                        <table class="table">
-                            <tr class="col-md-1">
-                                <?php Library::getLibrary(); ?>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div><!--row-->
-        </div><!--container-->
-    </div><!--jumbotron user-->
-    
+       
     <div class="jumbotron about">
         <div class="container">
             <div class="row">
@@ -41,6 +24,24 @@ include 'Library.php';
             </div><!--end row-->
         </div><!--container-->
     </div><!--end jumbrotron intro-->
+
+    <!--  display library of available titles -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center">Browse Library</h3>
+                    <div class="table-responsive" overflow>
+                        <table class="table">
+                            <tr class="col-md-1">
+                                <?php Library::getLibrary(); ?>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div><!--row-->
+        </div><!--container-->
+    </div><!--jumbotron-->
 </main>
 
 
