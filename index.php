@@ -1,30 +1,28 @@
-<?php include 'includes/header.php'?>
+<?php
+
+include 'includes/header.php';
+include 'Library.php';
+
+?>
+
 <main>
-    <div class="jumbotron intro">
+    <!--  display library of available titles -->
+    <div class="jumbotron user">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="search.php" method="post">
-                            <div class="col-md-3">
-                                <select class="form-control form-control-lg" name="search_type">
-                                   <!--<option value="" disabled selected>Choose...</option>-->
-                                     <!--<option value="Title">Title</option>-->
-                                  <option value="ISBN">ISBN</option>
-                                </select>
-                            </div><!--col-md-3-->
-                    </form>    
-                    <form action="search.php" method="post">    
-                            <div class="col-md-5">
-                                <input class="form-control form-control-lg" type="text" placeholder="Look for book..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Look for book...'" name="isbn" value="<?php if(isset($_POST['isbn'])) echo htmlspecialchars($_POST['isbn']); ?>">
-                            </div><!--col-md-5-->
-                            <div class="col-md-4">
-                                <input class="btn btn-secondary btn-block" type="submit" value="Search">
-                            </div><!--col-md-4-->   
-                    </form>
-                </div><!--col-md-12-->
-            </div>
+                    <h3 class="text-center">Browse Library</h3>
+                    <div class="table-responsive" overflow>
+                        <table class="table">
+                            <tr class="col-md-1">
+                                <?php Library::getLibrary(); ?>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div><!--row-->
         </div><!--container-->
-    </div><!--end jumbrotron intro-->
+    </div><!--jumbotron user-->
     
     <div class="jumbotron about">
         <div class="container">
