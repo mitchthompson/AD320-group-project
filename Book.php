@@ -163,12 +163,12 @@ class Book
 
 
     public function getElement($user=false){
-        $book = '<li style="margin-right:3%">';
+        $book = "<td>";
 
         if($this->title){
 
 
-            $book .= "<img class=\"img-thumbnail\" src='"       .$this->thumbnail_url   . "'/>";
+            $book .= "<img width=\"100\" height=\"100\" class=\"img-thumbnail\" src='" .$this->thumbnail_url. "' />";
             $book .= "<h5>Title:  "       .$this->title           ."</h5>";
             $book .= "<small>Author:  "      .$this->author     ."<br></small>";
             $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
@@ -177,7 +177,7 @@ class Book
                 $book .= "<h5>USER:"    .$user                  ."</h5>";
             }
         }
-        $book .= "</li>";
+        $book .= "</td>";
 
         return $book;
     }
