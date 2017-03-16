@@ -5,7 +5,7 @@ include 'Library.php';
 
 // get isbn from search box on user's page
 if (isset($_POST['isbn'])) {
-    $isbn = $POST['isbn'];
+    $isbn = $_POST['isbn'];
 }    
     
 
