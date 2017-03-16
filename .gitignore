@@ -16,7 +16,7 @@ Icon
 .com.apple.timemachine.donotpresent
 
 ### db ###
-db/db_settings.ini
+*.ini
 
 ### macOS ###
 *.DS_Store

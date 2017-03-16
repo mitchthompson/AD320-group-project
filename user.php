@@ -45,22 +45,16 @@ include 'includes/header-user.php';
             </div>
         </div><!--container-->
     </div><!--end jumbrotron intro-->
-
-    <div class="jumbotron user">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2><?php echo $name ?>'s Books</h2>
-                </div>             
-            </div><!--row-->
-        </div><!--container-->
-    </div><!--jumbotron user-->
 	
     <!--display user's library-->		
     <div class="jumbotron">
         <div class="container">
             <div class="row">
+                <div class="col-md-4">
+                    <h2><?php echo $name ?>'s Books</h2>
+                </div>
                 <div class="col-lg-12 library">
+                    <h3 class="text-center">Library</h3>
                      <div class="table-responsive" overflow>
                             <table class="table">
                                 <tr class="col-md-1">

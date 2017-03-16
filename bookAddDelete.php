@@ -36,6 +36,16 @@ if($_POST['add_delete'] == 'delete'){
     } catch (PDOException $p) {
         echo $p->getMessage();
     }
+}else if($_POST['add_delete'] == 'add'){
+    $location = '';
+    if($library_choice == 'user_owns_book'){
+        Library::insertBook(''. $isbn . '','' . $user_id . '');
+        $location = 'Library';
+    }else if($library_choice == 'user_requests_book'){
+       Library::insertRequest(''. $isbn . '','' . $user_id . '');
+        $location = 'Requests';
+    }
+    $message = "This book added successfuly to your " . $location;
 }
 
 ?>
@@ -45,11 +55,11 @@ if($_POST['add_delete'] == 'delete'){
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>ISBN <?php echo $isbn; ?></h2>
-                    <h2>Location <?php echo $library_choice; ?></h2>
-                    <h2>Add or Delete? <?php echo $add_delete; ?></h2>
-                    <h2><?php echo $message; ?></h2>
-                        <?php Library::getBook($isbn); ?>
+                    
+                    <p><?php echo $message; ?></p>
+                    <br><br>
+                        <?php Library::getBook($isbn); ?><br><br>
+                    <a href="./user.php">Return to user page -></a>
                     
                 
                 </div>

@@ -3,6 +3,7 @@ session_start();
 include 'includes/header.php';
 include 'db/dbPDO.php';
 
+
 //if login form submitted
 if (isset($_POST['submit'])){ 
     
@@ -12,7 +13,6 @@ if (isset($_POST['submit'])){
     //query database with username & password user entered
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
     
     
     try {

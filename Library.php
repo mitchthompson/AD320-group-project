@@ -150,7 +150,35 @@ INSERT;
             echo $book->getElement();
         }
 
-    public static function insertBook($isbn, $user_id){}
+    public static function insertBook($isbn, $user_id){
+        $book = new Book($isbn);
+        $title = $book->getTitle();
+        $author = $book->getAuthor();
+        $publishers = $book->getPublishers();
+        $publish_date = $book->getPublishDate();
+        $thumbnail_url = $book->getThumbnailUrl();
+
+        $conn = new dbPDO();
+
+            $stmt = <<<INSERT
+           
+                INSERT INTO user_owns_book (user_id, isbn)
+                    VALUES($user_id, $isbn);
+                INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
+                    VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
+                
+INSERT;
+        echo $stmt;
+            $sth = $conn->prepare($stmt);
+        try {
+            $sth->execute();
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        $conn = null;
+        $sth = null;
+        
+    }
 
 }
 
