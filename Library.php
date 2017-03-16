@@ -76,7 +76,7 @@ SELECT;
     public static function getUsersByBook($isbn){
         $conn = new dbPDO();
         $stmt = <<<SELECT
-            SELECT u.user_id, u.user_email, u.user_first_name, u.user_last_name, b.title
+            SELECT u.user_id, u.user_email, u.user_city, u.user_state, b.title
             FROM ul.user u
             INNER JOIN ul.user_owns_book ub
                 ON u.user_id = ub.user_id
@@ -89,7 +89,7 @@ SELECT;
         $sth = $conn->prepare($stmt);
         $sth->execute([$isbn]);
         while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-            var_dump($row);
+            //var_dump($row);
             echo <<<TABLE
              <table class="table">
              <thead class="thead-default">
