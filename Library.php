@@ -97,6 +97,7 @@ SELECT;
                     <th>Email</th>
                     <th>City</th> 
                     <th>State</th>
+                    <th>User Page</th>
                 </tr>  
             </thead>
             <tbody>
@@ -104,6 +105,7 @@ SELECT;
                     <td>$row[user_email]</td>
                     <td>$row[user_city]</td>
                     <td>$row[user_state]</td>
+                    <td><a href="./user-view.php?user_id=$row[user_id]">See All Books</a></td>
                 </tr> 
               </tbody>       
             </table>
