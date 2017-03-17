@@ -134,7 +134,7 @@ TABLE;
                     VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
                 
 INSERT;
-        echo $stmt;
+        //echo $stmt;
             $sth = $conn->prepare($stmt);
         try {
             $sth->execute();
@@ -170,7 +170,7 @@ INSERT;
                     VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
                 
 INSERT;
-        echo $stmt;
+        //echo $stmt;
             $sth = $conn->prepare($stmt);
         try {
             $sth->execute();
