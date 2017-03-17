@@ -10,9 +10,21 @@ if (!isset($_SESSION["is_auth"])) {
 include 'Library.php';
 include 'includes/header-user.php';
 
+function strip_all($string) {
+    $string = trim($string);
+    $string = strtolower($string);
+    $string = preg_replace("/[^0-9]+/", "", $string);
+    $string = str_replace(" +", "", $string);
+    return $string;
+}
+
 // get isbn from search box on user's page
 if (isset($_POST['isbn'])) {
     $isbn = $_POST['isbn'];
+    $isbn = strip_all($isbn);
+    if (strlen($isbn) != 10 && strlen($isbn) != 13) {
+        echo "Please enter 10 or 13 digit ISBN number.";
+    }			
 }    
     
 
