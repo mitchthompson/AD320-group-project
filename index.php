@@ -34,13 +34,15 @@ ini_set('display_errors', 1);
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-center">Browse Library</h3>
-                    <div class="table-responsive" overflow>
-                        <table class="table">
-                            <tr class="col-md-1">
-                                <?php Library::getLibrary(); ?>
-                            </tr>
-                        </table>
-                    </div>
+                       <div class="center-block">
+                            <div class="table-responsive" overflow>
+                                   <table class="table">
+                                          <tr>
+                                                 <?php Library::getLibrary(); ?>
+                                          </tr>
+                                   </table>
+                            </div>
+                       </div>              
                 </div>
             </div><!--row-->
         </div><!--container-->
