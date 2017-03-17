@@ -163,21 +163,21 @@ class Book
 
 
     public function getElement($user=false){
-        $book = "<td>";
+        $book = "<td><table>";
 
         if($this->title){
 
 
-            $book .= "<img width=\"100\" height=\"100\" class=\"img-thumbnail\" src='" .$this->thumbnail_url. "' />";
-            $book .= "<small>Title:  "       .$this->title           ."</small>";
-            $book .= "<small>Author:  "      .$this->author     ."<br></small>";
-            $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
-            $book .= "<small>ISBN:  "        .$this->isbn         ."<br></small>";
+            $book .= "<tr><td><img width=\"100\" height=\"100\" class=\"img-thumbnail\" src='".$this->thumbnail_url."'/></td></tr>";
+            $book .= "<tr><td><small>Title:  "       .$this->title           ."</small></td></tr>";
+            $book .= "<tr><td><small>Author:  "      .$this->author     ."<br></small></td></tr>";
+            $book .= "<tr><td><small>Publisher:  "   .$this->publishers      ."<br></small></td></tr>";
+            $book .= "<tr><td><small>ISBN:  "        .$this->isbn         ."<br></small></td></tr>";
             if($user){
-                $book .= "<h5>USER:"    .$user                  ."</h5>";
+                $book .= "<h5>USER:"  .$user ."</h5>";
             }
         }
-        $book .= "</td>";
+        $book .= "</table></td>";
 
         return $book;
     }
