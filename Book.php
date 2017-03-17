@@ -169,7 +169,7 @@ class Book
 
 
             $book .= "<img width=\"100\" height=\"100\" class=\"img-thumbnail\" src='" .$this->thumbnail_url. "' />";
-            $book .= "<h5>Title:  "       .$this->title           ."</h5>";
+            $book .= "<small>Title:  "       .$this->title           ."</small>";
             $book .= "<small>Author:  "      .$this->author     ."<br></small>";
             $book .= "<small>Publisher:  "   .$this->publishers      ."<br></small>";
             $book .= "<small>ISBN:  "        .$this->isbn         ."<br></small>";
