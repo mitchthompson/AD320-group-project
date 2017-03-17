@@ -9,8 +9,22 @@ if (!isset($_SESSION["is_auth"])) {
 	header("location:login.php");
 	exit;
 }
+
+function strip_all($string) {
+    $string = trim($string);
+    $string = strtolower($string);
+    $string = preg_replace("/[^0-9]+/", "", $string);
+    $string = str_replace(" +", "", $string);
+    return $string;
+}
+
+// get POST array data
 if(isset($_POST['submit'])){
     $isbn = $_POST['isbn'];
+    $isbn = strip_all($isbn);
+    if (strlen($isbn) != 10 && strlen($isbn) != 13) {
+        echo "Please enter 10 or 13 digit ISBN number.";
+    }	
     $library_choice = $_POST['library_choice'];
     $add_delete = $_POST['add_delete'];
     $user_id = $_SESSION['user_id'];
