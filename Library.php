@@ -129,7 +129,7 @@ TABLE;
             $stmt = <<<INSERT
            
                 INSERT INTO user_requests_book (user_id, isbn)
-                    VALUES($user_id, $isbn);
+                    VALUES($user_id, '$isbn');
                 INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
                     VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
                 
@@ -165,7 +165,7 @@ INSERT;
             $stmt = <<<INSERT
            
                 INSERT INTO user_owns_book (user_id, isbn)
-                    VALUES($user_id, $isbn);
+                    VALUES($user_id, '$isbn');
                 INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
                     VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
                 
