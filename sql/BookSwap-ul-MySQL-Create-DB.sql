@@ -15,7 +15,7 @@ CREATE database ul;
 USE ul;
 
 -- create tables
-CREATE TABLE user
+CREATE TABLE users
 (
   user_id           INT             NOT NULL 	PRIMARY KEY AUTO_INCREMENT,
   user_first_name   VARCHAR(50)		NOT NULL,
@@ -46,10 +46,10 @@ CREATE TABLE user_owns_book
 	  PRIMARY KEY (user_id, isbn),
   CONSTRAINT user_owns_book_user_id_FK
     FOREIGN KEY (user_id)
-    REFERENCES user (user_id),
+    REFERENCES users (user_id),
   CONSTRAINT user_owns_book_isbn_FK
     FOREIGN KEY (isbn)
-    REFERENCES user (book)
+    REFERENCES book (isbn)
 );
 
 CREATE TABLE user_requests_book
@@ -60,8 +60,8 @@ CREATE TABLE user_requests_book
 	  PRIMARY KEY (user_id, isbn),
   CONSTRAINT user_requests_book_user_id_FK
     FOREIGN KEY (user_id)
-    REFERENCES user (user_id),
+    REFERENCES users (user_id),
   CONSTRAINT user_requests_book_isbn_FK
     FOREIGN KEY (isbn)
-    REFERENCES user (book)
+    REFERENCES book (isbn)
 );
