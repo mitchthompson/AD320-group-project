@@ -59,7 +59,7 @@ if($_POST['add_delete'] == 'delete'){
        Library::insertRequest(''. $isbn . '','' . $user_id . '');
         $location = 'Requests';
     }
-    $message = "This book added successfuly to your " . $location;
+    $message = "This book added successfully to your " . $location . "!";
 }
 
 ?>
@@ -70,10 +70,10 @@ if($_POST['add_delete'] == 'delete'){
             <div class="row">
                 <div class="col-md-12">
                     
-                    <p><?php echo $message; ?></p>
+                    <h4><?php echo $message; ?></h4>
+                        <?php Library::getBook($isbn); ?>
                     <br><br>
-                        <?php Library::getBook($isbn); ?><br><br>
-                    <a href="./user.php">Return to user page -></a>
+                    <h4><a href="./user.php">Return to user page -></a></h4>
                     
                 
                 </div>

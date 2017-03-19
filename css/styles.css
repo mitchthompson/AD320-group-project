@@ -82,7 +82,7 @@ a img {
     background-color: #2C3E50;
     border-color: #2C3E50;
 }
-.register h2, .login h2, .user-books h2, .add-delete h3, .user h3{
+.register h2, .login h2, .user-books h2, .add-delete h3, .user h3, .user h4{
     margin-bottom: 20px;
     margin-left: 0;
     margin-top:0;
