@@ -43,7 +43,7 @@ if($_POST['add_delete'] == 'delete'){
         $query = $conn->prepare("DELETE FROM $library_choice WHERE user_id = '$user_id' AND isbn = '$isbn'");
         $query->execute();
         $conn = null;
-        $sth = null;
+        $query = null;
         
         $message = "This book deleted successfully!";
 
@@ -53,10 +53,10 @@ if($_POST['add_delete'] == 'delete'){
 }else if($_POST['add_delete'] == 'add'){
     $location = '';
     if($library_choice == 'user_owns_book'){
-        Library::insertBook(''. $isbn . '','' . $user_id . '');
+        Library::insertBook($user_id, $isbn);
         $location = 'Library';
     }else if($library_choice == 'user_requests_book'){
-       Library::insertRequest(''. $isbn . '','' . $user_id . '');
+       Library::insertRequest($user_id, $isbn);
         $location = 'Requests';
     }
     $message = "This book added successfully to your " . $location . "!";
