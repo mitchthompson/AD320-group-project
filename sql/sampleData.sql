@@ -5,11 +5,11 @@
  *************************************************************/
 
 /* John Doe -- use password '12345' */
-INSERT INTO `user`(`user_id`, `user_first_name`, `user_last_name`, `user_city`, `user_state`, `user_email`, `user_password`) 
+INSERT INTO `users`(`user_id`, `user_first_name`, `user_last_name`, `user_city`, `user_state`, `user_email`, `user_password`) 
 VALUES ('1', 'John', 'Doe', 'Seattle', 'WA', 'jdoe@gmail.com', '$2y$10$J0Cz1c7NO3VnKyI72jR3t.wu6PE9.aCX3p1GDqOOJS.8y.y35F1mO');  
 
 /* Mary Moe -- use password 'abcde' */
-INSERT INTO `user`(`user_id`, `user_first_name`, `user_last_name`, `user_city`, `user_state`, `user_email`, `user_password`) 
+INSERT INTO `users`(`user_id`, `user_first_name`, `user_last_name`, `user_city`, `user_state`, `user_email`, `user_password`) 
 VALUES ('2', 'Mary', 'Moe', 'Seattle', 'WA', 'mmoe0@gmail.com', '$2y$10$HB/hDcd1DJ0/XIe90koWr.xwlab/3ODECkECjYtP3JsJkqc5ZPoQW');      
             
 INSERT INTO `book`(`isbn`, `title`, `author`, `publishers`, `publish_date`, `thumbnail_url`) 
