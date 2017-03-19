@@ -105,34 +105,22 @@ TABLE;
         $sth = null;
     }
 
-    public static function insertRequest($isbn, $user_id){
-        $book = new Book($isbn);
-        $title = $book->getTitle();
-        $author = $book->getAuthor();
-        $publishers = $book->getPublishers();
-        $publish_date = $book->getPublishDate();
-        $thumbnail_url = $book->getThumbnailUrl();
-
-        $conn = new dbPDO();
-
-            $stmt = <<<INSERT
-           
-                INSERT INTO user_requests_book (user_id, isbn)
-                    VALUES($user_id, '$isbn');
-                INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
-                    VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
-                
-INSERT;
-        //echo $stmt;
-            $sth = $conn->prepare($stmt);
+    public static function insertRequest($user_id, $isbn)
+    {
+        self::addBook($isbn);
         try {
-            $sth->execute();
-        } catch (PDOException $e){
+            $conn = new dbPDO();
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO user_requests_book VALUES ('" . $user_id . "','" . $isbn . "');";
+            $conn->exec($sql);
+            $conn = null;
+
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        $conn = null;
-        $sth = null;
+
     }
+
     
     public static function getBook($isbn){
 
@@ -141,35 +129,58 @@ INSERT;
             echo $book->getElement();
         }
 
-    public static function insertBook($isbn, $user_id){
-        $book = new Book($isbn);
-        $title = $book->getTitle();
-        $author = $book->getAuthor();
-        $publishers = $book->getPublishers();
-        $publish_date = $book->getPublishDate();
-        $thumbnail_url = $book->getThumbnailUrl();
-
-        $conn = new dbPDO();
-
-            $stmt = <<<INSERT
-           
-                INSERT INTO user_owns_book (user_id, isbn)
-                    VALUES($user_id, '$isbn');
-                INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url)
-                    VALUES('$isbn','$title','$author','$publishers','$publish_date','$thumbnail_url'); 
-                
-INSERT;
-        //echo $stmt;
-            $sth = $conn->prepare($stmt);
+    public static function insertBook($user_id, $isbn)
+    {
+        self::addBook($isbn);
         try {
-            $sth->execute();
-        } catch (PDOException $e){
+            $conn = new dbPDO();
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO user_owns_book VALUES ('" . $user_id . "','" . $isbn . "');";
+            $conn->exec($sql);
+            $conn = null;
+
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        $conn = null;
-        $sth = null;
-        
+
     }
+
+public static function addBook($isbn)
+    {
+            $book = new Book($isbn);
+            $title = $book->getTitle();
+            $author = $book->getAuthor();
+            $publishers = $book->getPublishers();
+            $publish_date = $book->getPublishDate();
+            $thumbnail_url = $book->getThumbnailUrl();
+            $isbn = "$isbn";
+            $title = "$title";
+            $author = "$author";
+            $publishers = "$publishers";
+            $publish_date = "$publish_date";
+            $thumbnail_url = "$thumbnail_url";
+
+            try {
+                $conn = new dbPDO();
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $stmt = $conn->prepare("INSERT INTO book (isbn, title, author, publishers, publish_date, thumbnail_url) VALUES (:isbn, :title, :author, :publishers, :publish_date, :thumbnail_url)");
+                $stmt->bindParam(':isbn', $isbn);
+                $stmt->bindParam(':title', $title);
+                $stmt->bindParam(':author', $author);
+                $stmt->bindParam(':publishers', $publishers);
+                $stmt->bindParam(':publish_date', $publish_date);
+                $stmt->bindParam(':thumbnail_url', $thumbnail_url);
+
+                $stmt->execute();
+
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+                $conn = null;
+
+    }    
+    
 
 }
 
