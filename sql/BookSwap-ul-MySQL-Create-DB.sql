@@ -27,7 +27,7 @@ CREATE TABLE user
   CONSTRAINT user_pk 
     PRIMARY KEY (user_id),
   CONSTRAINT user_email_unq
-    UNIQUE (user_first_name, user_last_name, user_email)
+    UNIQUE (user_email)
 );
 
 CREATE TABLE book
