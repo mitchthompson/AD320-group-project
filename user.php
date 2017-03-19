@@ -20,7 +20,7 @@ include 'includes/header-user.php';
 
 <main>
     <!--  search function -->
-    <div class="jumbotron intro">
+    <div class="jumbotron search">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -47,7 +47,7 @@ include 'includes/header-user.php';
     </div><!--end jumbrotron intro-->
 	
     <!--display user's library-->		
-    <div class="jumbotron">
+    <div class="jumbotron user-books">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -55,6 +55,7 @@ include 'includes/header-user.php';
                 </div>
                 <div class="col-lg-12 library">
                     <h3 class="text-center">Library</h3>
+                    <hr>
 			<div class="center-block">
                      		<div class="table-responsive" overflow>
                             		<table class="table">
@@ -69,6 +70,7 @@ include 'includes/header-user.php';
 		  <!--display user's requests-->	   
                   <div class="col-lg-12">
                     <h3 class="text-center">Requesting</h3>
+                      <hr>
 			<div class="center-block">
                     		<div class="table-responsive" overflow>
                             		<table class="table">
@@ -86,7 +88,7 @@ include 'includes/header-user.php';
     </div><!--end jumbrotron library-->
     
     <!-- add or remove books-->	
-    <div class="jumbotron">
+    <div class="jumbotron add-delete">
         <div class="container">
             <div class="row">
                     <div class="col-md-6 col-md-offset-3">

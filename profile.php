@@ -46,6 +46,7 @@ if(isset($_POST['submit'])){
 
         $conn = null;
         $sth = null;
+        $message = "Password updated!";
 
     } catch (PDOException $p) {
         echo $p->getMessage();
@@ -71,8 +72,9 @@ if(isset($_POST['submit'])){
                             
                                 <label>Update Password</label><br>
                                 <input class="form-control" type="password" id="password" name="password"><br>
-                                <input class="btn btn-secondary btn-block" type="submit" name="submit" value="Update">
-                                <?php echo $message; ?>
+                                <input class="btn btn-primary btn-block" type="submit" name="submit" value="Update">
+                            <br>
+                        <p><?php echo $message; ?></p>
                          
                     </form>
                 </div>

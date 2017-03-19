@@ -91,24 +91,13 @@ SELECT;
         while($row = $sth->fetch(PDO::FETCH_ASSOC)){
             //var_dump($row);
             echo <<<TABLE
-             <table class="table">
-             <thead class="thead-default">
-                <tr>
-                    <th>Email</th>
-                    <th>City</th> 
-                    <th>State</th>
-                    <th>User Page</th>
-                </tr>  
-            </thead>
-            <tbody>
+
                 <tr>
                     <td>$row[user_email]</td>
                     <td>$row[user_city]</td>
                     <td>$row[user_state]</td>
                     <td><a href="./user-view.php?user_id=$row[user_id]">See All Books</a></td>
                 </tr> 
-              </tbody>       
-            </table>
 TABLE;
         }
 

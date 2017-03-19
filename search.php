@@ -34,27 +34,32 @@ if (isset($_POST['isbn'])) {
     <div class="jumbotron user">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <ul class="list-inline">
                         <?php Library::getBook($isbn); ?>
                     </ul>
                 </div><!--col-md-3-->
+                <div class="col-md-8">
+                    <h3>Users with this book:</h3>
+                    <hr>
+                    <table class="table">
+                        <thead class="thead-default">
+                        <tr>
+                            <th>Email</th>
+                            <th>City</th> 
+                            <th>State</th>
+                            <th>User Page</th>
+                        </tr>  
+                        </thead>
+                        <tbody>
+                        
+                        <?php Library::getUsersByBook($isbn); ?>
+                        </tbody>       
+                        </table>
+                </div><!--col-md-6-->
             </div><!--row-->
         </div><!--container-->
     </div><!--jumbotron--> 
-    
-    <div class="jumbotron user">
-        <div class="container">
-            <div class="row">
-                 <div class="col-md-6">
-                    <ul class="list-inline">
-                        <h4 class="text-center">Contact information for users with this book:</h4>
-                        <?php Library::getUsersByBook($isbn); ?>
-                    </ul>
-                </div><!--col-md-3-->
-            </div><!--row-->
-        </div><!--container-->
-    </div><!--jumbotron-->
    
 </main>
 
