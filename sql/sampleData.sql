@@ -29,14 +29,14 @@ VALUES ('9781423160915', 'Magnus Chase and the Gods of Asgard, Book 1: The Sword
         'Rick Riordan', 'Los Angeles : Disney Hyperion', '2015','https://covers.openlibrary.org/b/id/7358586-M.jpg');
 
 
-INSERT INTO `user_requests_book`(`user_id`, `isbn`, `entry_date`) 
-    VALUES ('1','9780316066747','2017-03-12');   
+INSERT INTO `user_requests_book`(`user_id`, `isbn`) 
+    VALUES ('1','9780316066747');   
     
-INSERT INTO `user_requests_book`(`user_id`, `isbn`, `entry_date`) 
-    VALUES ('1','9781423160915','2017-03-12'); 
+INSERT INTO `user_requests_book`(`user_id`, `isbn`) 
+    VALUES ('1','9781423160915'); 
 
-INSERT INTO `user_owns_book`(`user_id`, `isbn`, `entry_date`) 
-    VALUES ('1','9780525478812','2017-03-12');  
+INSERT INTO `user_owns_book`(`user_id`, `isbn`) 
+    VALUES ('1','9780525478812');  
 
-INSERT INTO `user_owns_book`(`user_id`, `isbn`, `entry_date`) 
-    VALUES ('1','9781400067695','2017-03-12');  
+INSERT INTO `user_owns_book`(`user_id`, `isbn`) 
+    VALUES ('1','9781400067695');  
