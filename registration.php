@@ -58,7 +58,7 @@ try {
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "INSERT INTO user (user_city, user_email, user_first_name, user_last_name, user_password, user_state) VALUES
+	$sql = "INSERT INTO users (user_city, user_email, user_first_name, user_last_name, user_password, user_state) VALUES
 ('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "', '" . $pass . "', '" . $_POST["state"] . "')";
     // use exec() because no results are returned
     $conn->exec($sql);

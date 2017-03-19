@@ -17,7 +17,7 @@ if (isset($_POST['submit'])){
     
     try {
     $conn = new dbPDO();
-    $query = $conn->prepare("SELECT * FROM `user` WHERE user_email='$username'");
+    $query = $conn->prepare("SELECT * FROM `users` WHERE user_email='$username'");
     $query->execute();
     $row = $query->rowCount();
 
