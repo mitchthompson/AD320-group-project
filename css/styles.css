@@ -78,6 +78,9 @@ a img {
 .browse h3 {
     margin-bottom: 50px;
 }
+.user-btn {
+    margin-top: 20px;
+}
 .btn-primary {
     background-color: #2C3E50;
     border-color: #2C3E50;

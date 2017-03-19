@@ -41,7 +41,7 @@ try {
 
 <main>
     <!--  search function -->
-    <div class="jumbotron intro">
+    <div class="jumbotron search">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -59,19 +59,19 @@ try {
                             <input class="form-control form-control-lg" type="text" placeholder="Look for book..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Look for book...'" name="isbn" value="<?php if(isset($_POST['isbn'])) echo htmlspecialchars($_POST['isbn']); ?>">
                         </div><!--col-md-5-->
                         <div class="col-md-4">
-                            <input class="btn btn-secondary btn-block" type="submit" value="Search">
+                            <input class="btn btn-secondary btn-block" type="submit" value="Find Users With Book">
                         </div><!--col-md-4-->
                     </form>
                 </div><!--col-md-12-->
             </div>
         </div><!--container-->
-    </div><!--end jumbrotron intro-->
+    </div><!--end jumbrotron search-->
 	
     <!--display user's library-->		
-    <div class="jumbotron">
+    <div class="jumbotron user-books">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <h2><?php echo $name ?>'s Books</h2>
                     <p><?php echo $city . ', ' . $state ?> | <?php echo $email ?></p>
                 </div>
@@ -79,6 +79,7 @@ try {
                 
                 <div class="col-lg-12 library">
                     <h3 class="text-center">Library</h3>
+                    <hr>
 			<div class="center-block">
                      		<div class="table-responsive" overflow>
                             		<table class="table">
@@ -93,6 +94,7 @@ try {
 		  <!--display user's requests-->	   
                   <div class="col-lg-12">
                     <h3 class="text-center">Requesting</h3>
+                      <hr>
 			<div class="center-block">
                     		<div class="table-responsive" overflow>
                             		<table class="table">
