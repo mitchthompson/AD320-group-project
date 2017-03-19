@@ -46,6 +46,8 @@ CREATE TABLE user_owns_book
 (
   user_id			INT         	  NOT NULL,
   isbn       	VARCHAR(13)     NOT NULL,
+  CONSTRAINT user_owns_book_PK
+	  PRIMARY KEY (user_id, isbn),
   CONSTRAINT user_owns_book_user_id_FK
     FOREIGN KEY (user_id)
     REFERENCES user (user_id),
@@ -58,6 +60,8 @@ CREATE TABLE user_requests_book
 (
   user_id			INT         	      NOT NULL,
   isbn       	VARCHAR(13)         NOT NULL,
+  CONSTRAINT user_requests_book_PK
+	  PRIMARY KEY (user_id, isbn),
   CONSTRAINT user_requests_book_user_id_FK
     FOREIGN KEY (user_id)
     REFERENCES user (user_id),
