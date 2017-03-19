@@ -12,11 +12,12 @@ $message = '';
 ?>
 
 <main>
-    <div class="jumbotron intro">
+    <div class="jumbotron register">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
-                    <p>Please complete all fields to sign up for BookSwap:</p>
+                    <h2>Registration</h2>
+                    <p>Please complete all fields to sign up for BookSwap</p>
                     <form action="registration.php" method="post">
 							<div class="form-group">
 							<b>First Name </b><br>
@@ -49,7 +50,7 @@ $message = '';
                             </div>
 							<br>
 							<div class="form-group">
-                             <input class="btn btn-secondary btn-block" type="submit" value="Register">
+                             <input class="btn btn-primary btn-block" type="submit" value="Register">
                             </div>  
                     </form>
                 </div><!--col-md-12-->

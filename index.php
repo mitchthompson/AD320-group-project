@@ -29,7 +29,7 @@ ini_set('display_errors', 1);
     </div><!--end jumbrotron intro-->
 
     <!--  display library of available titles -->
-    <div class="jumbotron">
+    <div class="jumbotron browse">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

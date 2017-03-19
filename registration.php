@@ -38,10 +38,10 @@ include 'includes/header.php'?>
     <div class="jumbotron user">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
 				<p><?php echo $message;?></p>
-				<?php if (!empty($message)){ ?><a href="register.php">Return to registration page</a><?php } ?>
-				<?php if ($message === ''){ ?><a href="login.php">Registration successful! Go to login page</a><?php } ?>
+                    <?php if (!empty($message)){ ?><p><a href="register.php">Return to registration page</a></p><?php } ?>
+                    <?php if ($message === ''){ ?><p>Registration successful!</p><a class="btn btn-primary btn-lg" href="login.php">Log in</a><?php } ?>
                 <p><?php echo $message; ?></p>
 				</div><!--col-md-12-->
             </div><!--row-->
@@ -62,11 +62,11 @@ try {
 ('" . $_POST["city"] . "', '" . $_POST["email"] . "', '" . $_POST["first_name"] . "', '" . $_POST["last_name"] . "', '" . $pass . "', '" . $_POST["state"] . "')";
     // use exec() because no results are returned
     $conn->exec($sql);
-	echo "New record created successfully";
+	//echo "New record created successfully";
     }
 catch(PDOException $e)
     {
-    echo $sql . "<br>" . $e->getMessage();
+    //echo $sql . "<br>" . $e->getMessage();
     }
 
 $conn = null;

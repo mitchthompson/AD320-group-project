@@ -50,18 +50,21 @@ if (isset($_POST['submit'])){
             ;
          
     }else{//output login form again with error message
-    echo '<main>
-    <div class="jumbotron">
+        echo '<main>
+    <div class="jumbotron login">
         <div class="container">
-                <div class="col-md-12">
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                <h2>Log In</h2>
+                <p>Not Registered? <a href="./register.php">Sign up here.</a></p>
                     <form method="post">
-                    <div class="form-group row">
-                      <label for="InputUsername" class="col-2 col-form-label">Username</label>
+                    <div class="form-group">
+                      <label for="InputUsername" class="col-2 col-form-label">Email</label>
                       <div class="col-10">
                         <input class="form-control" id="InputUsername" type="text" name="username">
                       </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group">
                       <label for="InputPassword" class="col-2 col-form-label">Password</label>
                       <div class="col-10">
                         <input class="form-control" id="InputPassword" type="password" name="password">
@@ -70,7 +73,7 @@ if (isset($_POST['submit'])){
                     
                     <div class="form-group row">    
                         <div class="login-button col-md-12">
-                            <input class="btn btn-secondary btn-block" name="submit" type="submit" value="Log In">
+                            <input class="btn btn-primary btn-block" name="submit" type="submit" value="Log In">
                         </div>
                     </div>
                     <div class="form-group row">    
@@ -80,10 +83,12 @@ if (isset($_POST['submit'])){
                     </div>
                     </form>
                 </div><!--col-md-12-->
+            </div><!--row-->
         </div><!--container-->
-    </div><!--end jumbrotron intro-->
+    </div><!--end jumbrotron-->
     
 </main>';
+
 
    }
         $conn = null;
@@ -94,17 +99,20 @@ if (isset($_POST['submit'])){
     }
 }else{
      echo '<main>
-    <div class="jumbotron">
+    <div class="jumbotron login">
         <div class="container">
-                <div class="col-md-12">
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                <h2>Log In</h2>
+                <p>Not Registered? <a href="./register.php">Sign up here.</a></p>
                     <form method="post">
-                    <div class="form-group row">
-                      <label for="InputUsername" class="col-2 col-form-label">Username</label>
+                    <div class="form-group">
+                      <label for="InputUsername" class="col-2 col-form-label">Email</label>
                       <div class="col-10">
                         <input class="form-control" id="InputUsername" type="text" name="username">
                       </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group">
                       <label for="InputPassword" class="col-2 col-form-label">Password</label>
                       <div class="col-10">
                         <input class="form-control" id="InputPassword" type="password" name="password">
@@ -113,11 +121,12 @@ if (isset($_POST['submit'])){
                     
                     <div class="form-group row">    
                         <div class="login-button col-md-12">
-                            <input class="btn btn-secondary btn-block" name="submit" type="submit" value="Log In">
+                            <input class="btn btn-primary btn-block" name="submit" type="submit" value="Log In">
                         </div>
                     </div>
                     </form>
                 </div><!--col-md-12-->
+            </div><!--row-->
         </div><!--container-->
     </div><!--end jumbrotron-->
     

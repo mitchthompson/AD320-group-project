@@ -5,11 +5,39 @@
 Version: 1.0
 @Author: Mitchell Thompson
 */
+html {
+    font-size: 1em;
+}
 body, body * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
     line-height: 1.5;
+    font-weight: 400;
+}
+p {margin-bottom: 1.5em;}
+h1, h2, h3, h4 {
+  margin: 1em 0 0 .5em;
+  font-weight: inherit;
+  line-height: 1.2;
+    color:#2C3E50;
+}
+h1 {
+  margin-top: 0;
+  font-size: 5.063em;
+}
+
+h2 {font-size: 3.375em;}
+
+h3 {font-size: 2.25em;}
+
+h4 {
+    font-size: 1.5em;
+}
+p {
+    font-size: 1.1em;
+    color:#2C3E50;
 }
 a img {
 	border: 0;
@@ -18,20 +46,46 @@ a img {
     border-radius: 0;
     border: 0;
 }
-.navbar.navbar-default {
+.navbar-default .navbar-brand {
+    color:white;
+    font-size: 2.2em;
 }
-.navbar-brand {
-    font-size: 1.8em;
+.navbar-default .navbar-nav>li>a {
+    font-family: 'Sarpanch', sans-serif;
+    font-size: 1.2em;
+    color: white;
+}
+.navbar-custom {
+    background-color: #2C3E50;
 }
 .header {
     max-width: 1200px;
 }
-.user-btn {
-    margin-top: 40px;
+.jumbotron {
+    padding-top: 40px;
+    background-color: #D8E1EB;
 }
-/******* login page *********/
-.login-button {
+.jumbotron.about {
+    padding-top: 50px;
+}
+.jumbotron p {
+    font-size: 1.5em;
+    color:#2C3E50;
+}
+.jumbotron.browse {
+    padding-top: 5px;
+}
+.browse h3 {
+    margin-bottom: 50px;
+}
+.btn-primary {
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+}
+.register h2, .login h2 {
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-top:0;
 }
 
-/******* User page *********/
 

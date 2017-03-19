@@ -79,26 +79,30 @@ try {
                 
                 <div class="col-lg-12 library">
                     <h3 class="text-center">Library</h3>
-                     <div class="table-responsive" overflow>
-                            <table class="table">
-                                <tr class="col-md-1">
-                      			<?php Library::getBooksByUser($user_id); ?>
-				</tr>
-                            </table>
-                     </div>    
+			<div class="center-block">
+                     		<div class="table-responsive" overflow>
+                            		<table class="table">
+                                		<tr>
+                      					<?php Library::getBooksByUser($user_id); ?>
+						</tr>
+                            		</table>
+				</div>
+                     	</div>    
                 </div><!--col-md-12-->
 		    
 		  <!--display user's requests-->	   
-                <div class="col-lg-12">
+                  <div class="col-lg-12">
                     <h3 class="text-center">Requesting</h3>
-                    	<div class="table-responsive" overflow>
-                            <table class="table">
-                                <tr class="col-md-1">
-                      			<?php Library::getRequestsByUser($user_id); ?>
-                                </tr>
-                            </table>
+			<div class="center-block">
+                    		<div class="table-responsive" overflow>
+                            		<table class="table">
+                                		<tr>
+                      					<?php Library::getRequestsByUser($user_id); ?>
+                                		</tr>
+                            		</table>
+				</div>		
                         </div>
-                </div>
+		    </div><!--col-md-12-->	
 			
 		  
                 

@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
                     <form action="profile.php" method="post">
                             
                                 <label>Update Password</label><br>
-                                <input class="form-control" type="text" id="password" name="password"><br>
+                                <input class="form-control" type="password" id="password" name="password"><br>
                                 <input class="btn btn-secondary btn-block" type="submit" name="submit" value="Update">
                                 <?php echo $message; ?>
                          
