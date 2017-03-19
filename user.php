@@ -50,7 +50,7 @@ include 'includes/header-user.php';
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <h2><?php echo $name ?>'s Books</h2>
                 </div>
                 <div class="col-lg-12 library">
@@ -79,21 +79,33 @@ include 'includes/header-user.php';
 				</div>		
                         </div>
 		    </div><!--col-md-12-->	
-		  <!-- add or remove books-->	
-                    <div class="col-md-12">
+		  
+                
+            </div><!--end row-->
+        </div><!--container-->
+    </div><!--end jumbrotron library-->
+    
+    <!-- add or remove books-->	
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h3 class="text-center">Add or Delete Books</h3>
                         <form action="bookAddDelete.php" method="post">
                             <input class="form-control" type="text" placeholder="Enter ISBN to Add or Delete Book" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter ISBN to Add or Delete Book'" name="isbn" id="ISBN" required="true">
-                            
+                            <br>
                             <select class="form-control form-control-lg" name="library_choice" required="true">
                                   <option value="" disabled selected>Edit Library or Requesting Books?</option>
                                     <option value="user_owns_book">Library</option>
                                   <option value="user_requests_book">Requesting</option>
                                 </select>
+                            <br>
                             <select class="form-control form-control-lg" name="add_delete" required="true">
                                   <option value="" disabled selected>Add or Delete?</option>
                                     <option value="add">Add</option>
                                   <option value="delete">Delete</option>
                                 </select>
+                            <br>
                             <div class="form-group row">    
                         	<div class="col-md-6 col-md-offset-3">
                             		<input class="btn btn-secondary center-block btn-block" name="submit" type="submit" value="Submit">
@@ -104,7 +116,7 @@ include 'includes/header-user.php';
                 
             </div><!--end row-->
         </div><!--container-->
-    </div><!--end jumbrotron library-->
+    </div><!--end jumbrotron-->
     
 </main>
 

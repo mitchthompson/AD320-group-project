@@ -64,7 +64,7 @@ if (isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="InputPassword" class="col-2 col-form-label">Password</label>
                       <div class="col-10">
-                        <input class="form-control" id="InputPassword" type="text" name="password">
+                        <input class="form-control" id="InputPassword" type="password" name="password">
                       </div>
                     </div>
                     
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])){
                     <div class="form-group row">
                       <label for="InputPassword" class="col-2 col-form-label">Password</label>
                       <div class="col-10">
-                        <input class="form-control" id="InputPassword" type="text" name="password">
+                        <input class="form-control" id="InputPassword" type="password" name="password">
                       </div>
                     </div>
                     
