@@ -77,7 +77,7 @@ SELECT;
         $conn = new dbPDO();
         $stmt = <<<SELECT
             SELECT u.user_id, u.user_email, u.user_city, u.user_state, b.title
-            FROM ul.user u
+            FROM ul.users u
             INNER JOIN ul.user_owns_book ub
                 ON u.user_id = ub.user_id
             INNER JOIN ul.book b
