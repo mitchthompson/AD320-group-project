@@ -44,7 +44,7 @@ include 'includes/header-user.php';
                 </div><!--col-md-12-->
             </div>
         </div><!--container-->
-    </div><!--end jumbrotron intro-->
+    </div><!--end jumbrotron search-->
 	
     <!--display user's library-->		
     <div class="jumbotron user-books">
