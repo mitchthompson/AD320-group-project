@@ -16,7 +16,7 @@ class Library
 
         $conn = new dbPDO();
         $stmt = <<<SELECT
-            SELECT user_id, isb
+            SELECT user_id, isbn
             FROM user_owns_book
             WHERE user_id = ?;
 SELECT;
