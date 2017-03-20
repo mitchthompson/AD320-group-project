@@ -121,7 +121,7 @@ TABLE;
 
     }
 
-    
+
     public static function getBook($isbn){
 
             $book = new Book($isbn);
@@ -160,7 +160,8 @@ public static function addBook($isbn)
             $publish_date = "$publish_date";
             $thumbnail_url = "$thumbnail_url";
             if ($thumbnail_url === "") {
-                $thumbnail_url = "https://openlibrary.org/images/icons/avatar_book-sm.png";
+                //$thumbnail_url = "https://openlibrary.org/images/icons/avatar_book-sm.png";
+                $thumbnail_url = "book_unknown.jpg";
             }
 
             try {
@@ -181,21 +182,6 @@ public static function addBook($isbn)
                 //echo $e->getMessage();
             }
                 $conn = null;
-
-    }    
-    
-
+    }
 }
-
-
-
-/**
- *
- * Sample usage
- *
- *
- */
-
-
-//Library::getBooksByUser(1);
 
