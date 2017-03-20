@@ -159,6 +159,9 @@ public static function addBook($isbn)
             $publishers = "$publishers";
             $publish_date = "$publish_date";
             $thumbnail_url = "$thumbnail_url";
+            if ($thumbnail_url === "") {
+                $thumbnail_url = "https://openlibrary.org/images/icons/avatar_book-sm.png";
+            }
 
             try {
                 $conn = new dbPDO();
@@ -175,7 +178,7 @@ public static function addBook($isbn)
 
 
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                //echo $e->getMessage();
             }
                 $conn = null;
 
