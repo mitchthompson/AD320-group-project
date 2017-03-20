@@ -16,8 +16,8 @@ class Library
 
         $conn = new dbPDO();
         $stmt = <<<SELECT
-            SELECT user_id, isbn
-            FROM ul.user_owns_book
+            SELECT user_id, isb
+            FROM user_owns_book
             WHERE user_id = ?;
 SELECT;
 
@@ -38,7 +38,7 @@ SELECT;
         $conn = new dbPDO();
         $stmt = <<<SELECT
             SELECT *
-            FROM ul.book;
+            FROM book;
 SELECT;
 
         $sth = $conn->prepare($stmt);
@@ -57,7 +57,7 @@ SELECT;
         $conn = new dbPDO();
         $stmt = <<<SELECT
             SELECT user_id, isbn
-            FROM ul.user_requests_book
+            FROM user_requests_book
             WHERE user_id = ?;
 SELECT;
 
@@ -77,10 +77,10 @@ SELECT;
         $conn = new dbPDO();
         $stmt = <<<SELECT
             SELECT u.user_id, u.user_email, u.user_city, u.user_state, b.title
-            FROM ul.users u
-            INNER JOIN ul.user_owns_book ub
+            FROM users u
+            INNER JOIN user_owns_book ub
                 ON u.user_id = ub.user_id
-            INNER JOIN ul.book b
+            INNER JOIN book b
                 ON ub.isbn = b.isbn
             WHERE ub.isbn = ?;
 SELECT;
@@ -195,5 +195,4 @@ public static function addBook($isbn)
 
 
 //Library::getBooksByUser(1);
-//Library::getUsersByBook(9780980200447);
-//Library::insertRequest('9780553380958','2');
+

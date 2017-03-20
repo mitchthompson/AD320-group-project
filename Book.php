@@ -25,7 +25,7 @@ class Book
         $this->isbn = "$isbn";
             try {
                 $conn = new dbPDO();
-                $sth = $conn->prepare('SELECT * FROM ul.book WHERE isbn=?');
+                $sth = $conn->prepare('SELECT * FROM book WHERE isbn=?');
                 $sth->execute([$this->isbn]);
                 $book = $sth->fetch(PDO::FETCH_ASSOC);
 

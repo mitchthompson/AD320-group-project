@@ -17,9 +17,9 @@ $message = '';
 
 try {
     $conn = new dbPDO();
-    $query = $conn->prepare("SELECT * FROM user WHERE user_id = '$user_id'");
+    $query = $conn->prepare("SELECT * FROM `users` WHERE user_id = '$user_id'");
     $query->execute();
-    $row = $query->rowCount();
+    //$row = $query->rowCount();
 
     while($rows = $query->fetch(PDO::FETCH_ASSOC)) {
             $first_name = $rows['user_first_name'];
@@ -28,9 +28,6 @@ try {
             $user_state = $rows['user_state'];
             $user_email = $rows['user_email'];
     }
-    
-    $conn = null;
-    $sth = null;
 
 } catch (PDOException $p) {
     echo $p->getMessage();
@@ -40,18 +37,19 @@ if(isset($_POST['submit'])){
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     try {
         $conn = new dbPDO();
-        $query = $conn->prepare("UPDATE user SET user_password= '$password' WHERE user_id = '$user_id'");
+        $query = $conn->prepare("UPDATE `users` SET user_password= '$password' WHERE user_id = '$user_id'");
         
         $query->execute();
-
-        $conn = null;
-        $sth = null;
         $message = "Password updated!";
 
     } catch (PDOException $p) {
         echo $p->getMessage();
     }
+
     }
+
+$conn = null;
+$query = null;
 
 ?>
 
